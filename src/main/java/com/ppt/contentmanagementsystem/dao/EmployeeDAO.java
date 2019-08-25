@@ -1,6 +1,8 @@
 package com.ppt.contentmanagementsystem.dao;
 
+import com.ppt.contentmanagementsystem.model.Department;
 import com.ppt.contentmanagementsystem.model.Employee;
+import com.ppt.contentmanagementsystem.repository.DepartmentRepository;
 import com.ppt.contentmanagementsystem.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +16,12 @@ public class EmployeeDAO {
 
     @Autowired
     EmployeeRepository employeeRepository;
+    @Autowired
+    DepartmentRepository departmentRepository;
 
-    public List<Employee> getAllEmployee(){
+    public List<Employee> getAllEmployee(String deptId){
         List<Employee> employees = new ArrayList<>();
-        employeeRepository.findAll()
+        employeeRepository.findAllByDepartment(deptId)
                 .forEach(employees::add);
         return employees;
     }
@@ -26,13 +30,15 @@ public class EmployeeDAO {
         return employeeRepository.findById(id);
     }
 
-    public void addEmployee(Employee e){
+    public void addEmployee(Employee e, String deptId){
+        Optional<Department> dopt = departmentRepository.findById(deptId);
         if (!employeeRepository.existsById(e.getName()))
+            e.setDepartment(dopt.get());
             employeeRepository.save(e);
     }
 
-    public Employee updateEmployee(String id, Employee e){
-        Optional<Employee> eopt = employeeRepository.findById(id);
+    public Employee updateEmployee(Employee e){
+        Optional<Employee> eopt = employeeRepository.findById(e.getName());
         Employee emp = eopt.get();
         emp.setName(e.getName());
         emp.setCredentials(e.getCredentials());
@@ -44,4 +50,5 @@ public class EmployeeDAO {
     public void deleteEmployee(String id){
         employeeRepository.deleteById(id);
     }
+
 }

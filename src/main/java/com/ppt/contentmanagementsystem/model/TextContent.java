@@ -7,7 +7,6 @@ import javax.persistence.Id;
 @Entity
 public class TextContent {
 
-    int id;
     @Id
     String category;
     String description;
@@ -18,17 +17,8 @@ public class TextContent {
 
     public TextContent(int id, String category, String description){
         super();
-        this.id = id;
         this.category = category;
         this.description = description;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCategory() {

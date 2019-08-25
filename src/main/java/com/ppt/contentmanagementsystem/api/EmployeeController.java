@@ -1,5 +1,6 @@
 package com.ppt.contentmanagementsystem.api;
 
+import com.ppt.contentmanagementsystem.dao.DepartmentDAO;
 import com.ppt.contentmanagementsystem.dao.EmployeeDAO;
 import com.ppt.contentmanagementsystem.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +14,17 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeDAO employeeDAO;
+    @Autowired
+    private DepartmentDAO departmentDAO;
 
-    @GetMapping("/employees")
-    public @ResponseBody Iterable<Employee> getAllEmployee(){
-        return employeeDAO.getAllEmployee();
+    @GetMapping("/departments/{deptId}/employees")
+    public @ResponseBody Iterable<Employee> getAllEmployee(@PathVariable String deptId){
+        return employeeDAO.getAllEmployee(deptId);
     }
 
-    @PostMapping("/employees")
-    public void addEmployee(@Valid @RequestBody Employee e){
-        employeeDAO.addEmployee(e);
+    @PostMapping("/departments/{deptId}/employees")
+    public void addEmployee(@Valid @RequestBody Employee e, @PathVariable String deptId){
+        employeeDAO.addEmployee(e, deptId);
     }
 
     @GetMapping("/employees/{id}")
@@ -31,8 +34,8 @@ public class EmployeeController {
     }
 
     @PutMapping("/employees/{id}")
-    public @ResponseBody Employee updateEmployee(@PathVariable String id, @Valid @RequestBody Employee e){
-        return employeeDAO.updateEmployee(id, e);
+    public @ResponseBody Employee updateEmployee(@Valid @RequestBody Employee e){
+        return employeeDAO.updateEmployee(e);
     }
 
     @DeleteMapping("/employees/{id}")

@@ -1,21 +1,19 @@
 package com.ppt.contentmanagementsystem.model;
 
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import java.util.Optional;
 
 @Entity
 public class Employee {
 
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
     @Id
     private String name;
     private String designation;
     private String credentials;
+
+    @ManyToOne()
+    @JoinColumn(name="department_name")
+    private Department department;
 
     public Employee (){
 
@@ -23,18 +21,9 @@ public class Employee {
 
     public Employee (int id, String name, String designation, String credentials){
         super();
-        this.id = id;
         this.name = name;
         this.designation = designation;
         this.credentials = credentials;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -59,5 +48,13 @@ public class Employee {
 
     public void setCredentials(String credentials) {
         this.credentials = credentials;
+    }
+
+    public String getDepartment() {
+        return department.getName();
+    }
+
+    public void setDepartment(Department byId) {
+        this.department = byId;
     }
 }
