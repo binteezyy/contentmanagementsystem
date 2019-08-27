@@ -1,5 +1,7 @@
 package com.ppt.contentmanagementsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -52,8 +54,13 @@ public class Employee {
         this.credentials = credentials;
     }
 
-    public String getDepartment() {
+    public String getDepartmentName() {
         return department.getName();
+    }
+
+    @JsonIgnore
+    public Department getDepartment(){
+        return department;
     }
 
     public void setDepartment(Department byId) {

@@ -1,5 +1,7 @@
 package com.ppt.contentmanagementsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -43,8 +45,16 @@ public class Department {
         this.description = description;
     }
 
-    public String getCollege() {
+    public String getCollegeId() {
         return college.getId();
+    }
+
+    @JsonIgnore
+    public String getCollegeName() { return college.getName(); }
+
+    @JsonIgnore
+    public College getCollege(){
+        return college;
     }
 
     public void setCollege(College college) {

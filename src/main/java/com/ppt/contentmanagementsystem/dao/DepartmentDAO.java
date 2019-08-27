@@ -45,6 +45,10 @@ public class DepartmentDAO {
         }
     }
 
+    public void addDepartment(Department dept){
+        departmentRepository.save(dept);
+    }
+
     public Department updateDepartment(Department dept){
         Optional<Department> dopt = departmentRepository.findById(dept.getName());
         Department dupt = dopt.get();
