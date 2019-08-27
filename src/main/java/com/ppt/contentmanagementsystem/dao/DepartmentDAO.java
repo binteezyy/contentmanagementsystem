@@ -19,9 +19,16 @@ public class DepartmentDAO {
     @Autowired
     CollegeRepository collegeRepository;
 
-    public List<Department> getAllDepartments(String collegeId){
+    public List<Department> getAllDepartmentsByCollege(String collegeId){
         List<Department> departments= new ArrayList<>();
         departmentRepository.findAllByCollege(collegeId)
+                .forEach(departments::add);
+        return departments;
+    }
+
+    public List<Department> getAllDepartments(){
+        List<Department> departments = new ArrayList<>();
+        departmentRepository.findAll()
                 .forEach(departments::add);
         return departments;
     }
@@ -30,7 +37,7 @@ public class DepartmentDAO {
         return departmentRepository.findById(id);
     }
 
-    public void addDepartment(Department dept, String collegeId){
+    public void addDepartmentInCollege(Department dept, String collegeId){
         Optional<College> copt = collegeRepository.findById(collegeId);
         if(!departmentRepository.existsById(dept.getName())){
             dept.setCollege(copt.get());

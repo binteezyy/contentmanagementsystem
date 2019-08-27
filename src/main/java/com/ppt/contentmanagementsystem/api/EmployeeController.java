@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,13 +19,19 @@ public class EmployeeController {
     private DepartmentDAO departmentDAO;
 
     @GetMapping("/departments/{deptId}/employees")
-    public @ResponseBody Iterable<Employee> getAllEmployee(@PathVariable String deptId){
-        return employeeDAO.getAllEmployee(deptId);
+    public @ResponseBody Iterable<Employee> getAllEmployeesByDepartment(@PathVariable String deptId){
+        return employeeDAO.getAllEmployeesByDepartment(deptId);
     }
 
     @PostMapping("/departments/{deptId}/employees")
     public void addEmployee(@Valid @RequestBody Employee e, @PathVariable String deptId){
-        employeeDAO.addEmployee(e, deptId);
+        employeeDAO.addEmployeeInDepartment(e, deptId);
+    }
+
+    @GetMapping("/employees")
+    public @ResponseBody
+    List<Employee> getAllEmployees(){
+        return employeeDAO.getAllEmployees();
     }
 
     @GetMapping("/employees/{id}")

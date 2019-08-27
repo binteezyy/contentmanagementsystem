@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit College</title>
+</head>
+<body>
+    <div align="center">
+        <h1> Edit College </h1> <br/>
+        <form action="#" th:action="@{/admin/colleges/update}" th:object="${college}" method="post">
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td> College ID: </td>
+                    <td><input type="text" th:field="*{id}" readonly="readonly"/></td>
+                </tr>
+                <tr>
+                    <td> College Name: </td>
+                    <td><input type="text" th:field="*{name}"/></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Save</button></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+</body>
+</html>
