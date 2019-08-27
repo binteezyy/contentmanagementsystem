@@ -15,14 +15,14 @@ public class DepartmentController {
     private DepartmentDAO departmentDAO;
 
 
-    @GetMapping("/departments")
-    public @ResponseBody Iterable<Department> getAllDepartments(){
-        return departmentDAO.getAllDepartments();
+    @GetMapping("/colleges/{collegeId}/departments")
+    public @ResponseBody Iterable<Department> getAllDepartments(@PathVariable String collegeId){
+        return departmentDAO.getAllDepartments(collegeId);
     }
 
-    @PostMapping("/departments")
-    public void addDepartment(@Valid @RequestBody Department dept){
-        departmentDAO.addDepartment(dept);
+    @PostMapping("/colleges/{collegeId}/departments")
+    public void addDepartment(@Valid @RequestBody Department dept, @PathVariable String collegeId){
+        departmentDAO.addDepartment(dept, collegeId);
     }
 
     @GetMapping("/departments/{id}")
@@ -33,8 +33,8 @@ public class DepartmentController {
 
     @PutMapping("/departments/{id}")
     public @ResponseBody
-    Department updateDepartment(@PathVariable String id, @Valid @RequestBody Department dept){
-        return departmentDAO.updateDepartment(id, dept);
+    Department updateDepartment(@Valid @RequestBody Department dept){
+        return departmentDAO.updateDepartment(dept);
     }
 
     @DeleteMapping("/departments/{id}")

@@ -1,7 +1,6 @@
 package com.ppt.contentmanagementsystem.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
@@ -15,7 +14,7 @@ public class TextContent {
 
     }
 
-    public TextContent(int id, String category, String description){
+    public TextContent(String category, String description){
         super();
         this.category = category;
         this.description = description;

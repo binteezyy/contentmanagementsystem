@@ -1,7 +1,9 @@
 package com.ppt.contentmanagementsystem.model;
 
-import javax.persistence.*;
-import java.util.Optional;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Employee {
@@ -19,7 +21,7 @@ public class Employee {
 
     }
 
-    public Employee (int id, String name, String designation, String credentials){
+    public Employee (String name, String designation, String credentials){
         super();
         this.name = name;
         this.designation = designation;

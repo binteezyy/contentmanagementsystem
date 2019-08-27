@@ -1,9 +1,6 @@
 package com.ppt.contentmanagementsystem.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,6 +10,10 @@ public class Department {
     private String name;
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name="college_name")
+    private College college;
+
     @OneToMany(mappedBy = "department", cascade=CascadeType.ALL)
     private List<Employee> employees;
 
@@ -20,7 +21,7 @@ public class Department {
 
     }
 
-    public Department(int id, String name, String description){
+    public Department(String name, String description){
         super();
         this.name = name;
         this.description = description;
@@ -40,6 +41,14 @@ public class Department {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCollege() {
+        return college.getId();
+    }
+
+    public void setCollege(College college) {
+        this.college = college;
     }
 
     public List<Employee> getEmployees() {
