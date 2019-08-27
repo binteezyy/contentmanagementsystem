@@ -1,6 +1,8 @@
 package com.ppt.contentmanagementsystem.dao;
 
+import com.ppt.contentmanagementsystem.model.College;
 import com.ppt.contentmanagementsystem.model.Department;
+import com.ppt.contentmanagementsystem.repository.CollegeRepository;
 import com.ppt.contentmanagementsystem.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +16,12 @@ public class DepartmentDAO {
 
     @Autowired
     DepartmentRepository departmentRepository;
+    @Autowired
+    CollegeRepository collegeRepository;
 
-    public List<Department> getAllDepartments(){
+    public List<Department> getAllDepartments(String collegeId){
         List<Department> departments= new ArrayList<>();
-        departmentRepository.findAll()
+        departmentRepository.findAllByCollege(collegeId)
                 .forEach(departments::add);
         return departments;
     }
@@ -26,13 +30,16 @@ public class DepartmentDAO {
         return departmentRepository.findById(id);
     }
 
-    public void addDepartment(Department dept){
-        if(!departmentRepository.existsById(dept.getName()))
+    public void addDepartment(Department dept, String collegeId){
+        Optional<College> copt = collegeRepository.findById(collegeId);
+        if(!departmentRepository.existsById(dept.getName())){
+            dept.setCollege(copt.get());
             departmentRepository.save(dept);
+        }
     }
 
-    public Department updateDepartment(String id, Department dept){
-        Optional<Department> dopt = departmentRepository.findById(id);
+    public Department updateDepartment(Department dept){
+        Optional<Department> dopt = departmentRepository.findById(dept.getName());
         Department dupt = dopt.get();
         dupt.setName(dept.getName());
         dupt.setDescription(dept.getDescription());
