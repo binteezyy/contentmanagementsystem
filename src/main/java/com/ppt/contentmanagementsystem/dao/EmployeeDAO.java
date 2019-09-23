@@ -19,9 +19,16 @@ public class EmployeeDAO {
     @Autowired
     DepartmentRepository departmentRepository;
 
-    public List<Employee> getAllEmployee(String deptId){
+    public List<Employee> getAllEmployeesByDepartment(String deptId){
         List<Employee> employees = new ArrayList<>();
         employeeRepository.findAllByDepartment(deptId)
+                .forEach(employees::add);
+        return employees;
+    }
+
+    public List<Employee> getAllEmployees(){
+        List<Employee> employees = new ArrayList<>();
+        employeeRepository.findAll()
                 .forEach(employees::add);
         return employees;
     }
@@ -30,7 +37,7 @@ public class EmployeeDAO {
         return employeeRepository.findById(id);
     }
 
-    public void addEmployee(Employee e, String deptId){
+    public void addEmployeeInDepartment(Employee e, String deptId){
         Optional<Department> dopt = departmentRepository.findById(deptId);
         if (!employeeRepository.existsById(e.getName()))
             e.setDepartment(dopt.get());

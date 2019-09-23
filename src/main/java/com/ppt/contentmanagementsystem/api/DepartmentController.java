@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,13 +17,19 @@ public class DepartmentController {
 
 
     @GetMapping("/colleges/{collegeId}/departments")
-    public @ResponseBody Iterable<Department> getAllDepartments(@PathVariable String collegeId){
-        return departmentDAO.getAllDepartments(collegeId);
+    public @ResponseBody Iterable<Department> getAllDepartmentsByCollege(@PathVariable String collegeId){
+        return departmentDAO.getAllDepartmentsByCollege(collegeId);
     }
 
     @PostMapping("/colleges/{collegeId}/departments")
     public void addDepartment(@Valid @RequestBody Department dept, @PathVariable String collegeId){
-        departmentDAO.addDepartment(dept, collegeId);
+        departmentDAO.addDepartmentInCollege(dept, collegeId);
+    }
+
+    @GetMapping("/departments")
+    public @ResponseBody
+    List<Department> getAllDepartments(){
+        return departmentDAO.getAllDepartments();
     }
 
     @GetMapping("/departments/{id}")

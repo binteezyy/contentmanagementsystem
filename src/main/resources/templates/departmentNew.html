@@ -19,6 +19,11 @@
                     <td><input type="text" th:field="*{description}"/></td>
                 </tr>
                 <tr>
+                <select th:field="*{college}">
+                    <option th:each="college: ${colleges}" th:value="${college.id}" th:text="${college.name}"></option>
+                </select>
+                </tr>
+                <tr>
                     <td><button type="submit">Save</button></td>
                 </tr>
             </table>
