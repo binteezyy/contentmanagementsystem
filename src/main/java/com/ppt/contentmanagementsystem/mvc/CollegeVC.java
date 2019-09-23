@@ -33,7 +33,7 @@ public class CollegeVC {
         College college = new College();
         model.addAttribute("college", college);
 
-        return "newCollege";
+        return "collegeNew";
     }
 
     @PostMapping("/admin/colleges/new")
@@ -45,7 +45,7 @@ public class CollegeVC {
 
     @GetMapping("/admin/colleges/edit/{id}")
     public ModelAndView editCollegePage(@PathVariable String id){
-        ModelAndView mav = new ModelAndView("editCollege");
+        ModelAndView mav = new ModelAndView("collegeEdit");
         Optional<College> college = collegeDAO.getCollege(id);
         mav.addObject("college", college);
 
