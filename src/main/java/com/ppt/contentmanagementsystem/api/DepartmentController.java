@@ -38,14 +38,14 @@ public class DepartmentController {
         return departmentDAO.getDepartment(id);
     }
 
-    @PutMapping("/departments/{id}")
-    public @ResponseBody
-    Department updateDepartment(@Valid @RequestBody Department dept){
-        return departmentDAO.updateDepartment(dept);
-    }
+//    @PutMapping("/departments/{id}")
+//    public @ResponseBody
+//    Department updateDepartment(@Valid @RequestBody Department dept){
+//        return departmentDAO.updateDepartment(dept);
+//    }
 
-    @DeleteMapping("/departments/{id}")
-    public void deleteDepartment(@PathVariable String id){
-        departmentDAO.deleteDepartment(id);
-    }
+//    @DeleteMapping("/departments/{id}")
+//    public void deleteDepartment(@PathVariable String id){
+//        departmentDAO.deleteDepartment(id);
+//    }
 }
