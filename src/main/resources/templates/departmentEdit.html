@@ -11,7 +11,6 @@
         <form action="#" th:action="@{/admin/departments/update}" th:object="${department}" method="post">
             <table border="0" cellpadding="10">
                     <td><input type="hidden" th:field="*{name}"/></td>
-                </tr>
                 <tr>
                     <td> Description: </td>
                     <td><input type="text" th:field="*{description}"/></td>

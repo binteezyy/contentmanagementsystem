@@ -11,7 +11,6 @@ public class Department {
     @Id
     private String name;
     private String description;
-
     @ManyToOne
     @JoinColumn(name="college_name")
     private College college;

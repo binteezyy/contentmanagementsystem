@@ -59,6 +59,7 @@ public class DepartmentVC {
 //        mav.addObject("department", department);
         model.addAttribute("department", department);
         model.addAttribute("colleges", colleges);
+
         return "departmentEdit";
     }
 

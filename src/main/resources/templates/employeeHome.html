@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1> Employee List </h1>
+    <a href="/admin/employees/new">Add new Employee</a><br/><br/>
+
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th> Employee Name </th>
+            <th> Designation </th>
+            <th> Credentials </th>
+            <th> Department </th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee: ${employees}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.designation}"></td>
+            <td th:text="${employee.credentials}"></td>
+            <td th:text="${employee.departmentName}"></td>
+            <td>
+                <a th:href="@{'/admin/employees/edit/' + ${employee.name}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/admin/employees/delete/' + ${employee.name}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -44,6 +44,10 @@ public class EmployeeDAO {
             employeeRepository.save(e);
     }
 
+    public void addEmployee(Employee e){
+        employeeRepository.save(e);
+    }
+
     public Employee updateEmployee(Employee e){
         Optional<Employee> eopt = employeeRepository.findById(e.getName());
         Employee emp = eopt.get();
