@@ -4,6 +4,7 @@ import com.ppt.contentmanagementsystem.dao.CollegeDAO;
 import com.ppt.contentmanagementsystem.dao.DepartmentDAO;
 import com.ppt.contentmanagementsystem.model.College;
 import com.ppt.contentmanagementsystem.model.Department;
+import org.hibernate.validator.constraints.ModCheck;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,7 +53,8 @@ public class DepartmentVC {
     @GetMapping("/admin/departments/edit/{id}")
     public String editDepartmentPage(Model model, @PathVariable String id){
 //        ModelAndView mav = new ModelAndView("departmentEdit");
-        Optional<Department> department = departmentDAO.getDepartment(id);
+        Optional<Department> dopt = departmentDAO.getDepartment(id);
+        Department department = dopt.get();
         List<College> colleges = collegeDAO.getAllColleges();
 //        mav.addObject("department", department);
         model.addAttribute("department", department);
