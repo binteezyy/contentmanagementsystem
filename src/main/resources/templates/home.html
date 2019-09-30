@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
+<head th:fragment="header">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="kksh">
 
-    <title>Dashboard</title>
+    <title th:text="${title}">No Title Set</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
     <link th:href="@{/css/simple-sidebar.css}" rel="stylesheet"/>
 </head>
 <body>
-<div class="d-flex" id="wrapper" th:fragment="sidenav">
+<div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading">CMS Admin</div>
         <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action bg-light active">Dashboard</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Colleges</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Departments</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Employees</a>
-            <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
+            <a href="/" class="list-group-item list-group-item-action bg-light active">Dashboard</a>
+            <a href="/admin/colleges" class="list-group-item list-group-item-action bg-light">Colleges</a>
+            <a href="/admin/departments" class="list-group-item list-group-item-action bg-light">Departments</a>
+            <a href="/admin/employees" class="list-group-item list-group-item-action bg-light">Employees</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -56,7 +54,7 @@
             </div>
         </nav>
 
-        <div class="container-fluid">
+        <div th:replace="collegeHome :: collegeHome">
             <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
