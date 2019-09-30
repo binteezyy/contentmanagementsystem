@@ -18,7 +18,7 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading">CMS Admin</div>
         <div class="list-group list-group-flush">
-            <a href="/" class="list-group-item list-group-item-action bg-light active">Dashboard</a>
+            <a href="/" class="list-group-item list-group-item-action bg-light">Dashboard</a> <!-- th:classappend="${module == '/' ? 'active' : ''}" where to put this? -->
             <a href="/admin/colleges" class="list-group-item list-group-item-action bg-light">Colleges</a>
             <a href="/admin/departments" class="list-group-item list-group-item-action bg-light">Departments</a>
             <a href="/admin/employees" class="list-group-item list-group-item-action bg-light">Employees</a>
@@ -54,7 +54,7 @@
             </div>
         </nav>
 
-        <div th:replace="collegeHome :: collegeHome">
+        <div th:replace="collegeHome :: collegeHome"> <!-- change this to variable -->
             <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">

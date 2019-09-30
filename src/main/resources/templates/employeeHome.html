@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head th:replace="home :: header">
-</head>
-<body>
-<div align="center">
+<div class="container-fluid" align="center" th:fragment="employeeHome">
     <h1> Employee List </h1>
     <a href="/admin/employees/new">Add new Employee</a><br/><br/>
 
@@ -37,5 +31,3 @@
         </tbody>
     </table>
 </div>
-</body>
-</html>
