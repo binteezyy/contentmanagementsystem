@@ -6,7 +6,12 @@ import com.ppt.contentmanagementsystem.repository.DepartmentRepository;
 import com.ppt.contentmanagementsystem.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,7 +49,13 @@ public class EmployeeDAO {
             employeeRepository.save(e);
     }
 
-    public void addEmployee(Employee e){
+    public void addEmployee(Employee e, MultipartFile imageFile) throws IOException {
+        Path currentPath = Paths.get(".");
+        Path absolutePath = currentPath.toAbsolutePath();
+        Path uploadPath = Paths.get(absolutePath + "/src/main/resources/static/uploads/");
+        byte[] bytes =  imageFile.getBytes();
+        Path path = Paths.get(uploadPath + imageFile.getOriginalFilename());
+        Files.write(path,bytes);
         employeeRepository.save(e);
     }
 

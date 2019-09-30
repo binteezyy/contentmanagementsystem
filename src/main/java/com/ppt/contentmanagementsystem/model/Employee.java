@@ -1,6 +1,7 @@
 package com.ppt.contentmanagementsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ public class Employee {
     private String name;
     private String designation;
     private String credentials;
+    private String image_fn;
 
     @ManyToOne()
     @JoinColumn(name="department_name")
@@ -23,11 +25,12 @@ public class Employee {
 
     }
 
-    public Employee (String name, String designation, String credentials){
+    public Employee (String name, String designation, String credentials, String image_fn){
         super();
         this.name = name;
         this.designation = designation;
         this.credentials = credentials;
+        this.image_fn = image_fn;
     }
 
     public String getName() {
@@ -54,6 +57,14 @@ public class Employee {
         this.credentials = credentials;
     }
 
+    public String getImage_fn() {
+        return image_fn;
+    }
+
+    public void setImage_fn(String image_fn) {
+        this.image_fn = image_fn;
+    }
+
     public String getDepartmentName() {
         return department.getName();
     }
@@ -66,4 +77,5 @@ public class Employee {
     public void setDepartment(Department byId) {
         this.department = byId;
     }
+
 }
