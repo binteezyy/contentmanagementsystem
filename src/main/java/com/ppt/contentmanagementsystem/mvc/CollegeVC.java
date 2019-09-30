@@ -24,6 +24,9 @@ public class CollegeVC {
     public String collegesHomePage(Model model){
         List<College> colleges = collegeDAO.getAllColleges();
         model.addAttribute("colleges", colleges);
+        model.addAttribute("title", "Colleges");
+        // model.addAttribute("pageName", "collegeHome");
+        // model.addAttribute("pagePart", "collegeHome");
 
         return "collegeHome";
     }
@@ -32,6 +35,7 @@ public class CollegeVC {
     public String newCollegePage(Model model){
         College college = new College();
         model.addAttribute("college", college);
+        model.addAttribute("title", "Add New College");
 
         return "collegeNew";
     }

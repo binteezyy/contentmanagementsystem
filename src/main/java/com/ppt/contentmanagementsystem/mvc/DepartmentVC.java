@@ -29,6 +29,9 @@ public class DepartmentVC {
     public String departmentsHomePage(Model model){
         List<Department> departments = departmentDAO.getAllDepartments();
         model.addAttribute("departments", departments);
+        model.addAttribute("title", "Departments");
+        model.addAttribute("pagePart", "departments");
+        model.addAttribute("pageTitle", "departmentHome");
 
         return "departmentHome";
     }

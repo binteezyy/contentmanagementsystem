@@ -26,6 +26,7 @@ public class EmployeeVC {
     public String employeesHomePage(Model model){
         List<Employee> employees = employeeDAO.getAllEmployees();
         model.addAttribute("employees", employees);
+        model.addAttribute("title", "Employees");
 
         return "employeeHome";
     }
@@ -55,6 +56,7 @@ public class EmployeeVC {
         List<Department> departments = departmentDAO.getAllDepartments();
         model.addAttribute("employee", employee);
         model.addAttribute("departments", departments);
+        model.addAttribute("title", "Employee Edit");
 
         return "employeeEdit";
     }
