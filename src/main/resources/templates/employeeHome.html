@@ -17,7 +17,7 @@
             <th> Designation </th>
             <th> Credentials </th>
             <th> Department </th>
-            <th> Image path </th>
+            <th> Image </th>
             <th> Image filename </th>
             <th> Actions </th>
         </tr>
@@ -28,7 +28,7 @@
             <td th:text="${employee.designation}"></td>
             <td th:text="${employee.credentials}"></td>
             <td> Department </td>
-            <td><img th:src="@{'uploads/' + ${employee.image_fn}}"/></td>
+            <td><img th:src="@{'/uploads/' + ${employee.image_fn}}"/></td>
             <td th:text="${employee.image_fn}"></td>
             <td>
                 <a th:href="@{'/admin/employees/edit/' + ${employee.name}}">Edit</a>

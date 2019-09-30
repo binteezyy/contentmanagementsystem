@@ -52,7 +52,7 @@ public class EmployeeDAO {
     public void addEmployee(Employee e, MultipartFile imageFile) throws IOException {
         Path currentPath = Paths.get(".");
         Path absolutePath = currentPath.toAbsolutePath();
-        Path uploadPath = Paths.get(absolutePath + "/src/main/resources/static/uploads/");
+        String uploadPath = absolutePath + "/src/main/resources/static/uploads/";
         byte[] bytes =  imageFile.getBytes();
         Path path = Paths.get(uploadPath + imageFile.getOriginalFilename());
         Files.write(path,bytes);
