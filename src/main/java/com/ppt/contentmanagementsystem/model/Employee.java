@@ -66,7 +66,14 @@ public class Employee {
     }
 
     public String getDepartmentName() {
-        return department.getName();
+        String returnValue;
+        try{
+            returnValue = department.getName();
+        } catch (Exception e) {
+            returnValue = "Empty";
+            e.printStackTrace();
+        }
+        return returnValue;
     }
 
     @JsonIgnore

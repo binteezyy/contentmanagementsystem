@@ -27,7 +27,7 @@
             <td th:text="${employee.name}"></td>
             <td th:text="${employee.designation}"></td>
             <td th:text="${employee.credentials}"></td>
-            <td> Department </td>
+            <td th:text="${employee.departmentName == null} ? 'Empty' : ${employee.departmentName}"></td>
             <td><img th:src="@{'/uploads/' + ${employee.image_fn}}"/></td>
             <td th:text="${employee.image_fn}"></td>
             <td>

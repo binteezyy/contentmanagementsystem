@@ -53,8 +53,10 @@ public class EmployeeDAO {
         Path currentPath = Paths.get(".");
         Path absolutePath = currentPath.toAbsolutePath();
         String uploadPath = absolutePath + "/src/main/resources/static/uploads/";
+        long datetime = System.currentTimeMillis();
+        String dt = Long.toString(datetime);
         byte[] bytes =  imageFile.getBytes();
-        Path path = Paths.get(uploadPath + imageFile.getOriginalFilename());
+        Path path = Paths.get(uploadPath + imageFile.getOriginalFilename() + dt);
         Files.write(path,bytes);
         employeeRepository.save(e);
     }
