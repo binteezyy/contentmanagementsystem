@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="head">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -8,11 +8,11 @@
 
     <title>Dashboard</title>
     <!-- Bootstrap core CSS -->
-    <link src="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
-    <link src="../static/css/simple-sidebar.css" rel="stylesheet" th:href="@{/css/simple-sidebar.css}" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/simple-sidebar.css}" rel="stylesheet"/>
 </head>
 <body>
-<div class="d-flex" id="wrapper">
+<div class="d-flex" id="wrapper" th:fragment="sidenav">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
@@ -21,9 +21,9 @@
             <a href="#" class="list-group-item list-group-item-action bg-light active">Dashboard</a>
             <a href="#" class="list-group-item list-group-item-action bg-light">Colleges</a>
             <a href="#" class="list-group-item list-group-item-action bg-light">Departments</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Employees</a>
+            <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -57,7 +57,7 @@
         </nav>
 
         <div class="container-fluid">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                   <div class="btn-group mr-2">
@@ -69,21 +69,14 @@
                     This week
                   </button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- /#page-content-wrapper -->
 </div>
 <!-- /#wrapper -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="../static/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
-<!-- Menu Toggle Script -->
-<!--<script>-->
-<!--    $("#menu-toggle").click(function(e) {-->
-<!--        e.preventDefault();-->
-<!--        $("#wrapper").toggleClass("toggled");-->
-<!--    });-->
-<!--</script>-->
 </body>
 </html>
