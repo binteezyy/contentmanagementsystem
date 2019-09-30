@@ -40,13 +40,13 @@ public class EmployeeController {
         return employeeDAO.getEmployee(id);
     }
 
-    @PutMapping("/employees/{id}")
-    public @ResponseBody Employee updateEmployee(@Valid @RequestBody Employee e){
-        return employeeDAO.updateEmployee(e);
-    }
-
-    @DeleteMapping("/employees/{id}")
-    public void deleteEmployee(@PathVariable String id){
-        employeeDAO.deleteEmployee(id);
-    }
+//    @PutMapping("/employees/{id}")
+//    public @ResponseBody Employee updateEmployee(@Valid @RequestBody Employee e){
+//        return employeeDAO.updateEmployee(e);
+//    }
+//
+//    @DeleteMapping("/employees/{id}")
+//    public void deleteEmployee(@PathVariable String id){
+//        employeeDAO.deleteEmployee(id);
+//    }
 }

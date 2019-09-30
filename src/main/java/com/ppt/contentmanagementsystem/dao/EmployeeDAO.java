@@ -49,16 +49,21 @@ public class EmployeeDAO {
             employeeRepository.save(e);
     }
 
-    public void addEmployee(Employee e, MultipartFile imageFile) throws IOException {
+    public void addEmployee(Employee e){
+        employeeRepository.save(e);
+    }
+
+    public void saveEmployeeImage(Employee emp, MultipartFile imageFile) throws  IOException {
         Path currentPath = Paths.get(".");
         Path absolutePath = currentPath.toAbsolutePath();
         String uploadPath = absolutePath + "/src/main/resources/static/uploads/";
         long datetime = System.currentTimeMillis();
         String dt = Long.toString(datetime);
         byte[] bytes =  imageFile.getBytes();
-        Path path = Paths.get(uploadPath + imageFile.getOriginalFilename() + dt);
+        Path path = Paths.get(uploadPath + dt + imageFile.getOriginalFilename());
         Files.write(path,bytes);
-        employeeRepository.save(e);
+        emp.setImage_fn(dt + imageFile.getOriginalFilename());
+        employeeRepository.save(emp);
     }
 
     public Employee updateEmployee(Employee e){

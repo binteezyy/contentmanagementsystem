@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,10 +45,8 @@ public class EmployeeVC {
     }
 
     @PostMapping("/admin/employees/new")
-    public String addEmployeePage(@ModelAttribute("employee") Employee employee, @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
-        employee.setImage_fn(imageFile.getOriginalFilename());
-        employeeDAO.addEmployee(employee, imageFile);
-
+    public String addEmployeePage(@ModelAttribute("employee") Employee employee){
+        employeeDAO.addEmployee(employee);
         return "redirect:/admin/employees";
     }
 
@@ -59,6 +60,22 @@ public class EmployeeVC {
         model.addAttribute("title", "Employee Edit");
 
         return "employeeEdit";
+    }
+
+    @GetMapping("/admin/employees/imageUpload/{id}")
+    public String uploadEmployeeImagePage(Model model, @PathVariable String id){
+        Optional<Employee> eopt = employeeDAO.getEmployee(id);
+        Employee employee = eopt.get();
+        model.addAttribute("employee", employee);
+
+        return "employeeImage";
+    }
+
+    @PostMapping("/admin/employees/imageUpload")
+    public String updateEmployeeImage(@ModelAttribute("employee") Employee employee, @RequestParam("imageFile") MultipartFile imageFile) throws IOException{
+        employeeDAO.saveEmployeeImage(employee, imageFile);
+
+        return "redirect:/admin/employees";
     }
 
     @PostMapping("/admin/employees/update")
