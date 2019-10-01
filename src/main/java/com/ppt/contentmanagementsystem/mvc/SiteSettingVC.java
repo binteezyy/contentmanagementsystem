@@ -114,7 +114,7 @@ public class SiteSettingVC {
         return "redirect:/admin/settings";
     }
 
-    @GetMapping("/admin/settings/longIconUpload/{id}")
+    @GetMapping("/admin/settings/headermp4Uload/{id}")
     public String Headermp4UploadPage(Model model, @PathVariable String id){
         Optional<SiteSetting> ssopt = siteSettingDAO.getSiteSetting(id);
         SiteSetting setting = ssopt.get();
