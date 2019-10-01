@@ -20,13 +20,23 @@ public class CollegeVC {
     @Autowired
     CollegeDAO collegeDAO;
 
+    @GetMapping("/")
+    public String homePage(Model model) {
+        model.addAttribute("title", "Dashboard");
+        return "home";
+    }
+    
+    @GetMapping("/home")
+    public String homePages(Model model) {
+        model.addAttribute("title", "Dashboard");
+        return "home";
+    }
+
     @GetMapping("/admin/colleges")
     public String collegesHomePage(Model model){
         List<College> colleges = collegeDAO.getAllColleges();
         model.addAttribute("colleges", colleges);
         model.addAttribute("title", "Colleges");
-        // model.addAttribute("pageName", "collegeHome");
-        // model.addAttribute("pagePart", "collegeHome");
 
         return "collegeHome";
     }

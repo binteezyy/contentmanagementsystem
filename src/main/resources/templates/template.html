@@ -11,14 +11,14 @@
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
     <link th:href="@{/css/simple-sidebar.css}" rel="stylesheet"/>
 </head>
-<body th:fragment="body">
+<body>
 <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper" th:fragment="sidebar">
         <div class="sidebar-heading">CMS Admin</div>
         <div class="list-group list-group-flush">
-            <a href="/" class="list-group-item list-group-item-action bg-light">Dashboard</a> <!-- th:classappend="${module == '/' ? 'active' : ''}" where to put this? -->
+            <a href="/home" class="list-group-item list-group-item-action bg-light">Dashboard</a> <!-- th:classappend="${module == '/' ? 'active' : ''}" where to put this? -->
             <a href="/admin/colleges" class="list-group-item list-group-item-action bg-light">Colleges</a>
             <a href="/admin/departments" class="list-group-item list-group-item-action bg-light">Departments</a>
             <a href="/admin/employees" class="list-group-item list-group-item-action bg-light">Employees</a>
@@ -29,7 +29,7 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom" th:fragment="navbar">
 <!--            <button class="btn btn-primary" id="menu-toggle">Sidebar</button>-->
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,22 +53,9 @@
                 </ul>
             </div>
         </nav>
-
-        <!-- <div th:replace="home :: home"> -->
-            <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                  <div class="btn-group mr-2">
-                    <button class="btn btn-sm btn-outline-secondary">Share</button>
-                    <button class="btn btn-sm btn-outline-secondary">Export</button>
-                  </div>
-                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                    <span data-feather="calendar"></span>
-                    This week
-                  </button>
-                </div>
-            </div> -->
-        <!-- </div> -->
+        <div class="container-fluid">
+            <!-- code goes here -->
+        </div>
     </div>
     <!-- /#page-content-wrapper -->
 </div>
