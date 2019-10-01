@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="home :: header">
+<head th:replace="template :: header">
 </head>
 <body>
     <div align="center">
         <h1> Edit Employee </h1>
-        <form action="#" th:action="@{/admin/employees/update}" th:object="${employee}" method="post">
+        <form action="#" th:action="@{/admin/employees/update}" th:object="${employee}" method="post" enctype="multipart/form-data">
             <table border="0" cellpadding="10">
                 <td><input type="hidden" th:field="*{name}"/></td>
                 <tr>
@@ -21,6 +21,9 @@
                     <select th:field="*{department}">
                         <option th:each="department: ${departments}" th:value="${department.name}" th:text="${department.description}"></option>
                     </select>
+                </tr>
+                <tr>
+                    <td th:text="${employee.image_fn}"></td><input type="file" name="imageFile">
                 </tr>
                 <tr>
                     <td><button type="submit">Save</button></td>

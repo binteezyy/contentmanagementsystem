@@ -8,7 +8,7 @@
 <body>
     <div align="center">
         <h1> Add Employee </h1><br/>
-        <form action="#" th:action="@{/admin/employees/new}" th:object="${employee}" method="post" enctype="multipart/form-data">
+        <form action="#" th:action="@{/admin/employees/new}" th:object="${employee}" method="post">
             <table border="0" cellpadding="10">
                 <tr>
                     <td> Employee Name: </td>
@@ -26,9 +26,6 @@
                     <select th:field="*{department}">
                         <option th:each="department: ${departments}" th:value="${department.name}" th:text="${department.description}"></option>
                     </select>
-                </tr>
-                <tr>
-                    <input type="file" name="imageFile">
                 </tr>
                 <tr>
                     <td><button type="submit">Save</button></td>
