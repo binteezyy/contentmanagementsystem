@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Setting</title>
+</head>
+<body>
+<div align="center">
+    <h1> Add Setting </h1><br/>
+    <form action="#" th:action="@{/admin/settings/new}" th:object="${setting}" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td> Setting id: </td>
+                <td><input type="text" th:field="*{id}"></td>
+            </tr>
+            <tr>
+                <td> Theme: </td>
+                <td><input type="text" th:field="*{themeName}"></td>
+            </tr>
+            <tr>
+                <td> SMS Url: </td>
+                <td><input type="text" th:field="*{smsUrl}"></td>
+            </tr>
+            <tr>
+                <td> Admission Url: </td>
+                <td><input type="text" th:field="*{admissionUrl}"></td>
+            </tr>
+            <tr>
+                <td> Header One: </td>
+                <td><input type="text" th:field="*{headerOne}"></td>
+            </tr>
+            <tr>
+                <td> Header Two: </td>
+                <td><input type="text" th:field="*{headerTwo}"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

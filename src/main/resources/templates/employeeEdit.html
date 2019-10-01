@@ -9,6 +9,7 @@
         <form action="#" th:action="@{/admin/employees/update}" th:object="${employee}" method="post" enctype="multipart/form-data">
             <table border="0" cellpadding="10">
                 <td><input type="hidden" th:field="*{name}"/></td>
+                <td><input type="hidden" th:field="*{image_fn}"/></td>
                 <tr>
                     <td> Designation: </td>
                     <td><input type="text" th:field="*{designation}"/></td>
@@ -21,9 +22,6 @@
                     <select th:field="*{department}">
                         <option th:each="department: ${departments}" th:value="${department.name}" th:text="${department.description}"></option>
                     </select>
-                </tr>
-                <tr>
-                    <td th:text="${employee.image_fn}"></td><input type="file" name="imageFile">
                 </tr>
                 <tr>
                     <td><button type="submit">Save</button></td>
