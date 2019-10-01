@@ -1,29 +1,44 @@
-<div class=container-fluid align="center" th:fragment="${pageTitle}">
-
-    <h1> Department List </h1>
-    <a href="/admin/departments/new">Create New Department</a> <br/><br/>
-
-    <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th> Department Name </th>
-            <th> Description </th>
-            <th> College </th>
-            <th> Actions </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="department : ${departments}">
-            <td th:text="${department.name}"></td>
-            <td th:text="${department.description}"></td>
-            <td th:text="${department.collegeId}"></td>
-            <td>
-                <a th:href="@{'/admin/departments/edit/' + ${department.name}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/admin/departments/delete/' + ${department.name}}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-
-    </table>
-</div>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template::header">
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <div th:insert="template::sidebar">  
+        </div>
+        <div id="page-content-wrapper">
+            <nav th:insert="template::navbar">
+            </nav>
+            <div class="container-fluid" align="center">
+                <h1> Department List </h1>
+                <a href="/admin/departments/new">Create New Department</a> <br/><br/>
+            
+                <table border="1" cellpadding="10">
+                    <thead>
+                    <tr>
+                        <th> Department Name </th>
+                        <th> Description </th>
+                        <th> College </th>
+                        <th> Actions </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="department : ${departments}">
+                        <td th:text="${department.name}"></td>
+                        <td th:text="${department.description}"></td>
+                        <td th:text="${department.collegeId}"></td>
+                        <td>
+                            <a th:href="@{'/admin/departments/edit/' + ${department.name}}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/admin/departments/delete/' + ${department.name}}">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>
