@@ -67,11 +67,12 @@ public class DepartmentDAO {
         departmentRepository.save(dept);
     }
 
-    public Department updateDepartment(Department dept){
+    public Department updateDepartment(Department dept, College college){
         Optional<Department> dopt = departmentRepository.findById(dept.getName());
         Department dupt = dopt.get();
         dupt.setName(dept.getName());
         dupt.setDescription(dept.getDescription());
+        dupt.setCollege(college);
         departmentRepository.save(dupt);
         return dupt;
     }

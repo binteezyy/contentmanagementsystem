@@ -66,8 +66,8 @@ public class DepartmentVC {
     }
 
     @PostMapping("/admin/departments/update")
-    public String updateDepartmentPage(@ModelAttribute("department") Department department){
-        departmentDAO.updateDepartment(department);
+    public String updateDepartmentPage(@ModelAttribute("department") Department department, @ModelAttribute("college") College college){
+        departmentDAO.updateDepartment(department, college);
 
         return "redirect:/admin/departments";
     }

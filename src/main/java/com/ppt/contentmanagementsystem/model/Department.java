@@ -24,10 +24,12 @@ public class Department {
 
     }
 
-    public Department(String name, String description){
+    public Department(String name, String description, String image_fn, College college){
         super();
         this.name = name;
         this.description = description;
+        this.image_fn = image_fn;
+        this.college = college;
     }
 
     public String getImage_fn() {

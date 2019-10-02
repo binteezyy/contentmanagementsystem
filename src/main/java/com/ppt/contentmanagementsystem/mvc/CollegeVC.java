@@ -5,12 +5,11 @@ import com.ppt.contentmanagementsystem.model.College;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,6 +70,22 @@ public class CollegeVC {
         collegeDAO.updateCollege(college);
 
         return "redirect:/admin/colleges";
+    }
+
+    @GetMapping("/admin/colleges/imageUpload/{id}")
+    public String uploadCollegeImagePage(Model model, @PathVariable String id){
+        Optional<College> copt = collegeDAO.getCollege(id);
+        College college = copt.get();
+        model.addAttribute("college", college);
+
+        return "collegeImage";
+    }
+
+    @PostMapping("/admin/colleges/imageUpload")
+    public String updateDepartmentImage(@ModelAttribute("college") College college, @RequestParam("imageFile")MultipartFile imageFile) throws IOException {
+        collegeDAO.saveCollegeImage(college, imageFile);
+
+        return"redirect:/admin/colleges";
     }
 
     @GetMapping("/admin/colleges/delete/{id}")
