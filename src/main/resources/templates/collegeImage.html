@@ -11,7 +11,7 @@
     <h3> <td th:text="${college.id}"></td></h3>
     <form action="#" th:action="@{/admin/colleges/imageUpload}" th:object="${college}" method="post" enctype="multipart/form-data">
         <tr>
-            <input type="file" name="imageFile">
+            <input type="file" name="imageFile" th:accept="image/*">
         </tr>
         <td><input type="hidden" th:field="*{id}"/></td>
         <td><input type="hidden" th:field="*{name}"/></td>
