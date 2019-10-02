@@ -1,7 +1,7 @@
 package com.ppt.contentmanagementsystem.api;
 
-import com.ppt.contentmanagementsystem.dao.SiteSettingDAO;
-import com.ppt.contentmanagementsystem.model.SiteSetting;
+import com.ppt.contentmanagementsystem.dao.SocialLinkDAO;
+import com.ppt.contentmanagementsystem.model.SocialLink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,20 +12,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class SiteSettingsController {
+public class SocialLinkController {
 
     @Autowired
-    private SiteSettingDAO siteSettingDAO;
+    private SocialLinkDAO socialLinkDAO;
 
-    @GetMapping("/siteSettings")
+    @GetMapping("/socials")
     public @ResponseBody
-    List<SiteSetting> getAllSettings(){
-        return siteSettingDAO.getAllSiteSetting();
+    List<SocialLink> getAllSocialLinks(){
+        return socialLinkDAO.getAllSocialLink();
     }
 
-    @GetMapping("/siteSettings/{id}")
+    @GetMapping("/socials/{id}")
     public @ResponseBody
-    Optional<SiteSetting> getSetting(@PathVariable String id){
-        return siteSettingDAO.getSiteSetting(id);
+    Optional<SocialLink> getSocialLink(@PathVariable Long id){
+        return socialLinkDAO.getSocialLink(id);
     }
 }

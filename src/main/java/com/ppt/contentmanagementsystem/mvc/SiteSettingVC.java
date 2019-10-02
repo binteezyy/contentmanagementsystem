@@ -23,6 +23,7 @@ public class SiteSettingVC {
         List<SiteSetting> settings = siteSettingDAO.getAllSiteSetting();
         model.addAttribute("settings", settings);
         model.addAttribute("title", "Site Settings");
+
         return "settingHome";
     }
 
