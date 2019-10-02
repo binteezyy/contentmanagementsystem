@@ -27,19 +27,19 @@ public class CollegeController {
         return collegeDAO.getCollege(id);
     }
 
-    @PostMapping("/colleges")
-    public void addCollege(@Valid @RequestBody College college){
-        collegeDAO.addCollege(college);
-    }
-
-    @PutMapping("/colleges/{id}")
-    public @ResponseBody College updateCollege(@Valid @RequestBody College college){
-        return collegeDAO.updateCollege(college);
-    }
-
-    @DeleteMapping("/colleges/{id}")
-    public void deleteCollege(@PathVariable String id){
-        collegeDAO.deleteCollege(id);
-    }
+//    @PostMapping("/colleges")
+//    public void addCollege(@Valid @RequestBody College college){
+//        collegeDAO.addCollege(college);
+//    }
+//
+//    @PutMapping("/colleges/{id}")
+//    public @ResponseBody College updateCollege(@Valid @RequestBody College college){
+//        return collegeDAO.updateCollege(college);
+//    }
+//
+//    @DeleteMapping("/colleges/{id}")
+//    public void deleteCollege(@PathVariable String id){
+//        collegeDAO.deleteCollege(id);
+//    }
 
 }

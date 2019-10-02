@@ -6,7 +6,12 @@ import com.ppt.contentmanagementsystem.repository.CollegeRepository;
 import com.ppt.contentmanagementsystem.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +51,19 @@ public class DepartmentDAO {
     }
 
     public void addDepartment(Department dept){
+        departmentRepository.save(dept);
+    }
+
+    public void saveDepartmentImage(Department dept, MultipartFile imageFile) throws IOException {
+        Path currentPath = Paths.get(".");
+        Path absolutePath = currentPath.toAbsolutePath();
+        String uploadPath = absolutePath + "/src/main/resources/static/uploads/";
+        long datetime = System.currentTimeMillis();
+        String dt = Long.toString(datetime);
+        byte[] bytes =  imageFile.getBytes();
+        Path path = Paths.get(uploadPath + dt + imageFile.getOriginalFilename());
+        Files.write(path,bytes);
+        dept.setImage_fn(dt + imageFile.getOriginalFilename());
         departmentRepository.save(dept);
     }
 
