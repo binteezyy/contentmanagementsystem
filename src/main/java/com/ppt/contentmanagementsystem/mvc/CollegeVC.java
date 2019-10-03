@@ -19,14 +19,8 @@ public class CollegeVC {
     @Autowired
     CollegeDAO collegeDAO;
 
-    @GetMapping("/")
+    @GetMapping("/admin")
     public String homePage(Model model) {
-        model.addAttribute("title", "Dashboard");
-        return "home";
-    }
-    
-    @GetMapping("/home")
-    public String homePages(Model model) {
         model.addAttribute("title", "Dashboard");
         return "home";
     }
