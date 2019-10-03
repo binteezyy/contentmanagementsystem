@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Info</title>
+</head>
+<body>
+<div align="center">
+    <h1> Add Info </h1><br/>
+    <form action="#" th:action="@{/admin/infos/new}" th:object="${info}" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td> School Name: </td>
+                <td><input type="text" th:field="*{school_name}"/></td>
+            </tr>
+            <tr>
+                <td> Vision: </td>
+                <td><input type="text" th:field="*{vision}"/></td>
+            </tr>
+            <tr>
+                <td> Mission: </td>
+                <td><input type="text" th:field="*{mission}"/></td>
+            </tr>
+            <tr>
+                <td> Objectives: </td>
+                <td><input type="text" th:field="*{objectives}"/></td>
+            </tr>
+            <tr>
+                <td> History: </td>
+                <td><input type="text" th:field="*{history}"/></td>
+            </tr>
+            <tr>
+            <tr>
+                <td><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

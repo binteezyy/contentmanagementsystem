@@ -134,6 +134,25 @@ public class SiteSettingVC {
         return "redirect:/admin/settings";
     }
 
+    @GetMapping("/admin/settings/footerUpload/{id}")
+    public String footerUploadPage(Model model, @PathVariable String id){
+        Optional<SiteSetting> ssopt = siteSettingDAO.getSiteSetting(id);
+        SiteSetting setting = ssopt.get();
+        model.addAttribute("setting", setting);
+        model.addAttribute("title", "Footer Image");
+        model.addAttribute("path", "footerUpload");
+        model.addAttribute("accept", "image/*");
+
+        return "settingImage";
+    }
+
+    @PostMapping("/admin/settings/footerUpload")
+    public String footerSave(@ModelAttribute("setting") SiteSetting setting, @RequestParam("imageFile")MultipartFile imageFile) throws IOException {
+        siteSettingDAO.saveSSfooter(setting, imageFile);
+
+        return "redirect:/admin/settings";
+    }
+
     @GetMapping("/admin/settings/delete/{id}")
     public String deleteSettingsPage(@PathVariable String id){
         siteSettingDAO.deleteSiteSetting(id);

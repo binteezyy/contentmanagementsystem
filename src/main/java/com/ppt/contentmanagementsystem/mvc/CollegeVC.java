@@ -57,12 +57,12 @@ public class CollegeVC {
     }
 
     @GetMapping("/admin/colleges/edit/{id}")
-    public ModelAndView editCollegePage(@PathVariable String id){
-        ModelAndView mav = new ModelAndView("collegeEdit");
-        Optional<College> college = collegeDAO.getCollege(id);
-        mav.addObject("college", college);
+    public String editCollege(Model model, @PathVariable String id){
+        Optional<College> copt = collegeDAO.getCollege(id);
+        College college = copt.get();
+        model.addAttribute("college", college);
 
-        return mav;
+        return "collegeEdit";
     }
 
     @PostMapping("/admin/colleges/update")

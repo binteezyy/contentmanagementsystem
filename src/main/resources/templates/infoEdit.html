@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: header">
+</head>
+<body>
+<div align="center">
+    <h1> Edit Info </h1>
+    <h3> <td th:text="${info.id}"></td></h3>
+    <form action="#" th:action="@{/admin/infos/update}" th:object="${info}" method="post">
+        <table border="0" cellpadding="10">
+            <td><input type="hidden" th:field="*{id}"/></td>
+            <tr>
+                <td> School Name: </td>
+                <td><input type="text" th:field="*{school_name}"/></td>
+            </tr>
+            <tr>
+                <td> Vision: </td>
+                <td><input type="text" th:field="*{vision}"/></td>
+            </tr>
+            <tr>
+                <td> Mission: </td>
+                <td><input type="text" th:field="*{mission}"/></td>
+            </tr>
+            <tr>
+                <td> Objectives: </td>
+                <td><input type="text" th:field="*{objectives}"/></td>
+            </tr>
+            <tr>
+                <td> History: </td>
+                <td><input type="text" th:field="*{history}"/></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
