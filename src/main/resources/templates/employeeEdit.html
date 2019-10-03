@@ -3,37 +3,30 @@
 <head th:replace="template::header">
 </head>
 <body>
-    <div class="d-flex" id="wrapper">
-        <div th:insert="template::sidebar">  
-        </div>
-        <div id="page-content-wrapper">
-            <nav th:insert="template::navbar">
-            </nav>
-            <div class="container-fluid" align="center">
-                <h1> Edit Employee </h1>
-                <form action="#" th:action="@{/admin/employees/update}" th:object="${employee}" method="post">
-                    <table border="0" cellpadding="10">
-                        <td><input type="hidden" th:field="*{name}"/></td>
-                        <tr>
-                            <td> Designation: </td>
-                            <td><input type="text" th:field="*{designation}"/></td>
-                        </tr>
-                        <tr>
-                            <td> Credentials: </td>
-                            <td><input type="text" th:field="*{credentials}"/></td>
-                        </tr>
-                        <tr>
-                            <select th:field="*{department}">
-                                <option th:each="department: ${departments}" th:value="${department.name}" th:text="${department.description}"></option>
-                            </select>
-                        </tr>
-                        <tr>
-                            <td><button type="submit">Save</button></td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-        </div>
+    <div align="center">
+        <h1> Edit Employee </h1>
+        <form action="#" th:action="@{/admin/employees/update}" th:object="${employee}" method="post" enctype="multipart/form-data">
+            <table border="0" cellpadding="10">
+                <td><input type="hidden" th:field="*{name}"/></td>
+                <td><input type="hidden" th:field="*{image_fn}"/></td>
+                <tr>
+                    <td> Designation: </td>
+                    <td><input type="text" th:field="*{designation}"/></td>
+                </tr>
+                <tr>
+                    <td> Credentials: </td>
+                    <td><input type="text" th:field="*{credentials}"/></td>
+                </tr>
+                <tr>
+                    <select th:field="*{department}">
+                        <option th:each="department: ${departments}" th:value="${department.name}" th:text="${department.description}"></option>
+                    </select>
+                </tr>
+                <tr>
+                    <td><button type="submit">Save</button></td>
+                </tr>
+            </table>
+        </form>
     </div>
     <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
