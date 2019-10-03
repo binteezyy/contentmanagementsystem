@@ -26,6 +26,7 @@
                     <th> Header One </th>
                     <th> Header Two </th>
                     <th> Header mp4 </th>
+                    <th> Footer Image</th>
                     <th> Actions </th>
                 </tr>
                 </thead>
@@ -53,6 +54,10 @@
                         <video th:src="@{'/uploads/' + ${setting.headermp4}}"></video>
                         <span th:text="${setting.headermp4}"></span>
                         <a th:href="@{'/admin/settings/headermp4Upload/' + ${setting.id}}">Upload Header mp4</a>
+                    </td>
+                    <td>
+                        <span th:text="${setting.footer}"></span>
+                        <a th:href="@{'/admin/settings/footerUpload/' + ${setting.id}}">Upload Footer Image</a>
                     </td>
                     <td>
                         <a th:href="@{'/admin/settings/edit/' + ${setting.id}}">Edit</a>

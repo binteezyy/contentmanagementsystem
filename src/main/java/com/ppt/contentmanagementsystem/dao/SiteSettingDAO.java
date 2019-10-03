@@ -100,6 +100,19 @@ public class SiteSettingDAO {
         siteSettingRepository.save(ss);
     }
 
+    public void saveSSfooter(SiteSetting ss, MultipartFile imageFile) throws IOException {
+        Path currentPath = Paths.get(".");
+        Path absolutePath = currentPath.toAbsolutePath();
+        String uploadPath = absolutePath + "/src/main/resources/static/uploads/";
+        long datetime = System.currentTimeMillis();
+        String dt = Long.toString(datetime);
+        byte[] bytes = imageFile.getBytes();
+        Path path = Paths.get(uploadPath + dt + imageFile.getOriginalFilename());
+        Files.write(path,bytes);
+        ss.setFooter(dt + imageFile.getOriginalFilename());
+        siteSettingRepository.save(ss);
+    }
+
     public void deleteSiteSetting(String id){
         siteSettingRepository.deleteById(id);
     }
