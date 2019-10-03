@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:80", maxAge = 3600)
 @Controller
 public class CollegeVC {
 
