@@ -79,6 +79,6 @@ public class SocialLinkVC {
     public String deleteSocialPage(@PathVariable Long id){
         socialLinkDAO.deleteSocialLink(id);
 
-        return "redirect:/admin/employees";
+        return "redirect:/admin/socials";
     }
 }
