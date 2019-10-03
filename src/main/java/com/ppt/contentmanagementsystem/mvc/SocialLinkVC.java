@@ -63,6 +63,7 @@ public class SocialLinkVC {
         Optional<SocialLink> slopt = socialLinkDAO.getSocialLink(id);
         SocialLink socialLink = slopt.get();
         model.addAttribute("socialLink", socialLink);
+        model.addAttribute("accept", "image/*");
 
         return "socialImage";
     }

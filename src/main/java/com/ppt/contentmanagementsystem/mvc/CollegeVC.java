@@ -77,6 +77,7 @@ public class CollegeVC {
         Optional<College> copt = collegeDAO.getCollege(id);
         College college = copt.get();
         model.addAttribute("college", college);
+        model.addAttribute("accept", "image/*");
 
         return "collegeImage";
     }
