@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head th:replace="template :: header">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template::header">
 </head>
 <body>
     <div align="center">
@@ -30,5 +29,7 @@
             </table>
         </form>
     </div>
+    <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 </body>
 </html>
