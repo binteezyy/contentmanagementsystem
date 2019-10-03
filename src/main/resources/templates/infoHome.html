@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template::header">
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    <div th:insert="template::sidebar">
+    </div>
+    <div id="page-content-wrapper">
+        <nav th:insert="template::navbar">
+        </nav>
+        <div class="container-fluid">
+            <h1> Info List </h1>
+            <a href="/admin/infos/new">Add new Info</a><br/><br/>
+            <div class="table-responsive">
+                <table border="1" cellpadding="10">
+                    <thead>
+                    <tr>
+                        <th> Id </th>
+                        <th> School Name </th>
+                        <th> Vision </th>
+                        <th> Mission </th>
+                        <th> Objectives </th>
+                        <th> History </th>
+                        <th> Actions </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="info: ${infos}">
+                        <td th:text="${info.id}"></td>
+                        <td th:text="${info.school_name}"></td>
+                        <td th:text="${info.vision}"></td>
+                        <td th:text="${info.mission}"></td>
+                        <td th:text="${info.objectives}"></td>
+                        <td th:text="${info.history}"></td>
+                        <td>
+                            <a th:href="@{'/admin/infos/edit/' + ${info.id}}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/admin/infos/delete/' + ${info.id}}">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>
