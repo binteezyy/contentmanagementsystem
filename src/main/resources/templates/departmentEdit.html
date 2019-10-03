@@ -10,7 +10,7 @@
             <nav th:insert="template::navbar">
             </nav>
             <div class="container-fluid" align="center">
-                <h1> Edit Department </h1> <br/>
+                <h1> Edit Department </h1> <br/><br/>
                 <h3> <td th:text="${department.name}"></td></h3>
                 <form action="#" th:action="@{/admin/departments/update}" th:object="${department}" method="post">
                     <table border="0" cellpadding="10">
@@ -18,15 +18,18 @@
                             <td><input type="hidden" th:field="*{image_fn}"/></td>
                         <tr>
                             <td> Department Name: </td>
-                            <td><input type="text" th:field="*{description}"/></td>
+                            <td><input type="text" class="form-control" th:field="*{description}"/></td>
                         </tr>
                         <tr>
-                            <select th:field="*{college}">
-                                <option th:each="college: ${colleges}" th:value="${college.id}" th:text="${college.name}"></option>
-                            </select>
+                            <td>College:</td>
+                            <td>
+                                <select class="form-control" th:field="*{college}">
+                                    <option th:each="college: ${colleges}" th:value="${college.id}" th:text="${college.name}"></option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
-                            <td><button type="submit">Save</button></td>
+                            <td colspan="2" style="text-align: center"><button class="btn btn-primary" type="submit">Save</button></td>
                         </tr>
                     </table>
                 </form>

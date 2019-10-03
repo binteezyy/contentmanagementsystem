@@ -10,7 +10,7 @@
             <nav th:insert="template::navbar">
             </nav>
             <div class="container-fluid" align="center">
-                <h1> Upload Employee Image </h1>
+                <h1> Upload Employee Image </h1><br/>
                 <h3> <td th:text="${employee.name}"></td></h3>
                 <form action="#" th:action="@{/admin/employees/imageUpload}" th:object="${employee}" method="post" enctype="multipart/form-data">
                     <tr>
@@ -21,7 +21,7 @@
                     <td><input type="hidden" th:field="*{credentials}"/></td>
                     <td><input type="hidden" th:field="*{department}"/></td>
                     <tr>
-                        <td><button type="submit">Save</button></td>
+                        <td><button class="btn btn-primary" type="submit">Save</button></td>
                     </tr>
                 </form>
             </div>

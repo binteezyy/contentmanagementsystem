@@ -13,19 +13,21 @@
                 <td><input type="hidden" th:field="*{image_fn}"/></td>
                 <tr>
                     <td> Designation: </td>
-                    <td><input type="text" th:field="*{designation}"/></td>
+                    <td><input type="text" class="form-control" th:field="*{designation}"/></td>
                 </tr>
                 <tr>
                     <td> Credentials: </td>
-                    <td><input type="text" th:field="*{credentials}"/></td>
+                    <td><input type="text" class="form-control" th:field="*{credentials}"/></td>
                 </tr>
                 <tr>
-                    <select th:field="*{department}">
-                        <option th:each="department: ${departments}" th:value="${department.name}" th:text="${department.description}"></option>
-                    </select>
+                    <td>
+                        <select class="form-control" th:field="*{department}">
+                            <option th:each="department: ${departments}" th:value="${department.name}" th:text="${department.description}"></option>
+                        </select>
+                    </td>
                 </tr>
-                <tr>
-                    <td><button type="submit">Save</button></td>
+                <tr colspan="2" style="text-align:center">
+                    <td><button class="btn btn-primary" type="submit">Save</button></td>
                 </tr>
             </table>
         </form>
