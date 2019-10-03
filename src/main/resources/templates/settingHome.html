@@ -51,7 +51,7 @@
                     <td th:text="${setting.headerTwo}"></td>
                     <td>
                         <span th:text="${setting.headermp4}"></span>
-                        <a th:href="@{'/admin/settings/headermp4Upload' + ${setting.id}}">Upload Header mp4</a>
+                        <a th:href="@{'/admin/settings/headermp4Upload/' + ${setting.id}}">Upload Header mp4</a>
                     </td>
                     <td>
                         <a th:href="@{'/admin/settings/edit/' + ${setting.id}}">Edit</a>

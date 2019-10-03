@@ -25,12 +25,13 @@ public class Employee {
 
     }
 
-    public Employee (String name, String designation, String credentials, String image_fn){
+    public Employee (String name, String designation, String credentials, String image_fn, Department dept){
         super();
         this.name = name;
         this.designation = designation;
         this.credentials = credentials;
         this.image_fn = image_fn;
+        this.department = dept;
     }
 
     public String getName() {

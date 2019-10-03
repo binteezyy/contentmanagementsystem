@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Social Media Image</title>
+</head>
+<body>
+<div align="center">
+    <h1> Upload Social Media Image </h1>
+    <h3> <td th:text="${socialLink.name}"></td></h3>
+    <form action="#" th:action="@{/admin/socials/imageUpload}" th:object="${socialLink}" method="post" enctype="multipart/form-data">
+        <tr>
+            <input type="file" name="imageFile" th:accept="image/*">
+        </tr>
+        <td><input type="hidden" th:field="*{id}"/></td>
+        <td><input type="hidden" th:field="*{name}"/></td>
+        <td><input type="hidden" th:field="*{url}"/></td>
+        <tr>
+            <td><button type="submit">Save</button></td>
+        </tr>
+    </form>
+</div>
+</body>
+</html>

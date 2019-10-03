@@ -66,12 +66,13 @@ public class EmployeeDAO {
         employeeRepository.save(emp);
     }
 
-    public Employee updateEmployee(Employee e){
+    public Employee updateEmployee(Employee e, Department dept){
         Optional<Employee> eopt = employeeRepository.findById(e.getName());
         Employee emp = eopt.get();
         emp.setName(e.getName());
         emp.setCredentials(e.getCredentials());
         emp.setDesignation(e.getDesignation());
+        emp.setDepartment(dept);
         employeeRepository.save(emp);
         return emp;
     }

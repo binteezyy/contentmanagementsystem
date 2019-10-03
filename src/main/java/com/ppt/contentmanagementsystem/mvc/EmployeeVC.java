@@ -79,8 +79,8 @@ public class EmployeeVC {
     }
 
     @PostMapping("/admin/employees/update")
-    public String updateEmployeePage(@ModelAttribute("employee") Employee employee){
-        employeeDAO.updateEmployee(employee);
+    public String updateEmployeePage(@ModelAttribute("employee") Employee employee, @ModelAttribute("department") Department dept){
+        employeeDAO.updateEmployee(employee, dept);
 
         return "redirect:/admin/employees";
     }

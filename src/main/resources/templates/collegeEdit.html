@@ -8,12 +8,11 @@
 <body>
     <div align="center">
         <h1> Edit College </h1> <br/>
+        <h3> <td th:text="${college.id}"></td></h3>
         <form action="#" th:action="@{/admin/colleges/update}" th:object="${college}" method="post">
             <table border="0" cellpadding="10">
-                <tr>
-                    <td> College ID: </td>
-                    <td><input type="text" th:field="*{id}" readonly="readonly" disabled/></td>
-                </tr>
+                <td><input type="hidden" th:field="*{id}"></td>
+                <td><input type="hidden" th:field="*{image_fn}"></td>
                 <tr>
                     <td> College Name: </td>
                     <td><input type="text" th:field="*{name}"/></td>

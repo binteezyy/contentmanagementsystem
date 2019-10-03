@@ -5,6 +5,7 @@
 <body>
 <div align="center">
     <h1 th:text="${title}"> </h1>
+    <h3><td th:text="${setting.id}"></td></h3>
     <form action="#" th:action="@{/admin/settings/{path}(path=${path})}" th:object="${setting}" method="post" enctype="multipart/form-data">
         <tr>
             <input type="file" name="imageFile" th:accept="${accept}">

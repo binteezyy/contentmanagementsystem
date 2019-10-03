@@ -16,8 +16,9 @@
                     <table border="1" cellpadding="10">
                         <thead>
                         <tr>
-                            <th> College ID </th>
+                            <th> College Initials </th>
                             <th> College Name </th>
+                            <th> Image filename </th>
                             <th> Actions </th>
                         </tr>
                         </thead>
@@ -25,9 +26,11 @@
                         <tr th:each="college : ${colleges}">
                             <td th:text="${college.id}"></td>
                             <td th:text="${college.name}"></td>
+                            <td th:text="${college.image_fn}"></td>
                             <td>
                                 <a th:href="@{'/admin/colleges/edit/' + ${college.id}}">Edit</a>
                                 <a th:href="@{'/admin/colleges/delete/' + ${college.id}}">Delete</a>
+                                <a th:href="@{'/admin/colleges/imageUpload/' + ${college.id}}">Image Upload</a>
                             </td>
                         </tr>
                         </tbody>

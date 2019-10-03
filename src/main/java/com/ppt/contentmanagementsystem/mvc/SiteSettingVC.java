@@ -23,6 +23,7 @@ public class SiteSettingVC {
         List<SiteSetting> settings = siteSettingDAO.getAllSiteSetting();
         model.addAttribute("settings", settings);
         model.addAttribute("title", "Site Settings");
+
         return "settingHome";
     }
 
@@ -114,7 +115,7 @@ public class SiteSettingVC {
         return "redirect:/admin/settings";
     }
 
-    @GetMapping("/admin/settings/headermp4Uload/{id}")
+    @GetMapping("/admin/settings/headermp4Upload/{id}")
     public String Headermp4UploadPage(Model model, @PathVariable String id){
         Optional<SiteSetting> ssopt = siteSettingDAO.getSiteSetting(id);
         SiteSetting setting = ssopt.get();

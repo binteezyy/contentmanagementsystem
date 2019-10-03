@@ -11,6 +11,8 @@ public class Department {
     @Id
     private String name;
     private String description;
+    private String image_fn;
+
     @ManyToOne
     @JoinColumn(name="college_name")
     private College college;
@@ -22,10 +24,20 @@ public class Department {
 
     }
 
-    public Department(String name, String description){
+    public Department(String name, String description, String image_fn, College college){
         super();
         this.name = name;
         this.description = description;
+        this.image_fn = image_fn;
+        this.college = college;
+    }
+
+    public String getImage_fn() {
+        return image_fn;
+    }
+
+    public void setImage_fn(String image_fn) {
+        this.image_fn = image_fn;
     }
 
     public String getName() {
@@ -45,7 +57,13 @@ public class Department {
     }
 
     public String getCollegeId() {
-        return college.getId();
+        String returnValue;
+        try {
+            returnValue = college.getId();
+        } catch (Exception e) {
+            returnValue = "Empty";
+        }
+        return returnValue;
     }
 
     @JsonIgnore
