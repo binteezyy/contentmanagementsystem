@@ -53,6 +53,11 @@ public class CollegeDAO {
         Optional<College> copt = collegeRepository.findById(college.getId());
         College cupdate = copt.get();
         cupdate.setName(college.getName());
+        cupdate.setDescription(college.getDescription());
+        cupdate.setTelno(college.getTelno());
+        cupdate.setFaxno(college.getFaxno());
+        cupdate.setEmail(college.getEmail());
+        cupdate.setAddress(college.getAddress());
         collegeRepository.save(cupdate);
         return cupdate;
     }
