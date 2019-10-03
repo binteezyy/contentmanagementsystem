@@ -16,7 +16,13 @@
             </tr>
             <tr>
                 <td> Theme: </td>
-                <td><input type="text" th:field="*{themeName}"></td>
+                <td>
+                    <select th:field="*{themeName}">
+                        <option th:value="Red" th:text="Red"></option>
+                        <option th:value="Yellow" th:text="Yellow"></option>
+                        <option th:value="Blue" th:text="Blue"></option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td> SMS Url: </td>
