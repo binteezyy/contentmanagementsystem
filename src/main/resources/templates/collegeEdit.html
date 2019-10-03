@@ -18,10 +18,30 @@
                         <td><input type="hidden" th:field="*{image_fn}"></td>
                         <tr>
                             <td> College Name: </td>
-                            <td><input type="text" th:field="*{name}"/></td>
+                            <td><input type="text" class="form-control" th:field="*{name}"/></td>
                         </tr>
                         <tr>
-                            <td><button type="submit">Save</button></td>
+                            <td> College Description: </td>
+                            <td><input type="text" class="form-control" th:field="*{description}"/></td>
+                        </tr>
+                        <tr>
+                            <td> College Telephone Number: </td>
+                            <td><input type="number" class="form-control" th:field="*{telno}"/></td>
+                        </tr>
+                        <tr>
+                            <td> College Fax Number: </td>
+                            <td><input type="number" class="form-control" th:field="*{faxo}"/></td>
+                        </tr>
+                        <tr>
+                            <td> College Email Address: </td>
+                            <td><input type="email" class="form-control" th:field="*{email}"/></td>
+                        </tr>
+                        <tr>
+                            <td> College Address: </td>
+                            <td><input type="text" class="form-control" th:field="*{address}"/></td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-primary" type="submit">Save</button></td>
                         </tr>
                     </table>
                 </form>

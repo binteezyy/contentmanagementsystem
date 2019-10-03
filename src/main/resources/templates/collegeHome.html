@@ -19,6 +19,11 @@
                             <th> College Initials </th>
                             <th> College Name </th>
                             <th> Image filename </th>
+                            <th> College Description </th>
+                            <th> College Telephone Number </th>
+                            <th> College Fax Number </th>
+                            <th> College Email Address </th>
+                            <th> College Address </th>
                             <th> Actions </th>
                         </tr>
                         </thead>
@@ -27,6 +32,11 @@
                             <td th:text="${college.id}"></td>
                             <td th:text="${college.name}"></td>
                             <td th:text="${college.image_fn}"></td>
+                            <td th:text="${college.description}"></td>
+                            <td th:text="${college.telno}"></td>
+                            <td th:text="${college.faxno}"></td>
+                            <td th:text="${college.email}"></td>
+                            <td th:text="${college.address}"></td>
                             <td>
                                 <a th:href="@{'/admin/colleges/edit/' + ${college.id}}"><button type="button" class="btn btn-primary">Edit</button></a>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" th:attr="data-target='#collegeDelete'+${college.id}">Delete</button>
