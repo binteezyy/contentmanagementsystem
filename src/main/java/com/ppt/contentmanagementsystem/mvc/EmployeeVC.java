@@ -67,6 +67,7 @@ public class EmployeeVC {
         Optional<Employee> eopt = employeeDAO.getEmployee(id);
         Employee employee = eopt.get();
         model.addAttribute("employee", employee);
+        model.addAttribute("title", "Employee Image");
 
         return "employeeImage";
     }

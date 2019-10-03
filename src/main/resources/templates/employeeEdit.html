@@ -4,16 +4,17 @@
 </head>
 <body>
     <div class="d-flex" id="wrapper">
-        <div th:insert="template::sidebar">  
-        </div>
+        <!-- <div th:insert="template::sidebar">  
+        </div> -->
         <div id="page-content-wrapper">
-            <nav th:insert="template::navbar">
-            </nav>
+            <!-- <nav th:insert="template::navbar">
+            </nav> -->
             <div class="container-fluid" align="center">
                 <h1> Edit Employee </h1>
-                <form action="#" th:action="@{/admin/employees/update}" th:object="${employee}" method="post">
+                <form action="#" th:action="@{/admin/employees/update}" th:object="${employee}" method="post" th:fragment="empEdit">
                     <table border="0" cellpadding="10">
                         <td><input type="hidden" th:field="*{name}"/></td>
+                        <td><input type="hidden" th:field="*{image_fn}"/></td>
                         <tr>
                             <td> Designation: </td>
                             <td><input type="text" th:field="*{designation}"/></td>
