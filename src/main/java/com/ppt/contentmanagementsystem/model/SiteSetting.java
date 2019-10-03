@@ -17,12 +17,13 @@ public class SiteSetting {
     private String headerOne;
     private String headerTwo;
     private String headermp4;
+    private String footer;
 
     public SiteSetting(){
 
     }
 
-    public SiteSetting(String mainIconFn, String negativeIconFn, String iconLongFn, String themeName, String smsUrl, String admissionUrl, String headerOne, String headerTwo, String headermp4){
+    public SiteSetting(String mainIconFn, String negativeIconFn, String iconLongFn, String themeName, String smsUrl, String admissionUrl, String headerOne, String headerTwo, String headermp4, String footer){
         super();
         this.mainIconFn = mainIconFn;
         this.negativeIconFn = negativeIconFn;
@@ -33,6 +34,7 @@ public class SiteSetting {
         this.headerOne = headerOne;
         this.headerTwo = headerTwo;
         this.headermp4 = headermp4;
+        this.footer = footer;
     }
     public String getId() {
         return id;
@@ -112,5 +114,13 @@ public class SiteSetting {
 
     public void setHeadermp4(String headermp4) {
         this.headermp4 = headermp4;
+    }
+
+    public String getFooter() {
+        return footer;
+    }
+
+    public void setFooter(String footer) {
+        this.footer = footer;
     }
 }
