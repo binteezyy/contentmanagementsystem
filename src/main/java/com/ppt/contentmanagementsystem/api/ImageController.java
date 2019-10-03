@@ -17,7 +17,7 @@ public class ImageController {
     @RequestMapping(value="/images/{id}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public void getImage(HttpServletResponse response, @PathVariable String id) throws IOException {
 
-        var imageFile = new ClassPathResource("static/uploads" + id);
+        var imageFile = new ClassPathResource("static/uploads/" + id);
         response.setContentType(MediaType.IMAGE_JPEG_VALUE);
         StreamUtils.copy(imageFile.getInputStream(), response.getOutputStream());
     }
