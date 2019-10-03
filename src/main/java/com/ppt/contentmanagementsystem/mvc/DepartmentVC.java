@@ -27,8 +27,6 @@ public class DepartmentVC {
         List<Department> departments = departmentDAO.getAllDepartments();
         model.addAttribute("departments", departments);
         model.addAttribute("title", "Departments");
-        model.addAttribute("pagePart", "departments");
-        model.addAttribute("pageTitle", "departmentHome");
 
         return "departmentHome";
     }
@@ -39,6 +37,7 @@ public class DepartmentVC {
         List<College> colleges = collegeDAO.getAllColleges();
         model.addAttribute("department", department);
         model.addAttribute("colleges", colleges);
+        model.addAttribute("title", "Add New Department");
 
         return "departmentNew";
     }

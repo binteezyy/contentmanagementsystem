@@ -19,13 +19,13 @@ public class CollegeVC {
     @Autowired
     CollegeDAO collegeDAO;
 
-    @GetMapping("/")
+    @GetMapping("/admin")
     public String homePage(Model model) {
         model.addAttribute("title", "Dashboard");
         return "home";
     }
     
-    @GetMapping("/home")
+    @GetMapping("/")
     public String homePages(Model model) {
         model.addAttribute("title", "Dashboard");
         return "home";
@@ -78,6 +78,7 @@ public class CollegeVC {
         College college = copt.get();
         model.addAttribute("college", college);
         model.addAttribute("accept", "image/*");
+        model.addAttribute("title","College Image Upload");
 
         return "collegeImage";
     }

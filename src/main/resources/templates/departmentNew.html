@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="template::header">
-</head>
+<head th:replace="template::header"></head>
 <body>
     <div class="d-flex" id="wrapper">
         <div th:insert="template::sidebar">  
@@ -15,22 +14,22 @@
                     <table border="0" cellpadding="10">
                         <tr>
                             <td> Department Initials: </td>
-                            <td><input type="text" th:field="*{name}"></td>
+                            <td><input type="text" class="form-control" th:field="*{name}"></td>
                         </tr>
                         <tr>
                             <td> Department Name: </td>
-                            <td><input type="text" th:field="*{description}"/></td>
+                            <td><input type="text" class="form-control" th:field="*{description}"/></td>
                         </tr>
                         <tr>
                         <td> College: </td>
                         <td>
-                        <select th:field="*{college}">
+                        <select class="form-control" th:field="*{college}">
                             <option th:each="college: ${colleges}" th:value="${college.id}" th:text="${college.name}"></option>
                         </select>
                         </td>
                         </tr>
                         <tr>
-                            <td><button type="submit">Save</button></td>
+                            <td colspan="2" style="text-align: center"><button class="btn btn-primary" type="submit">Save</button></td>
                         </tr>
                     </table>
                 </form>
