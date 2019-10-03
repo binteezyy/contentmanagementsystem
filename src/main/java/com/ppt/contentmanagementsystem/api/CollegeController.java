@@ -5,10 +5,10 @@ import com.ppt.contentmanagementsystem.model.College;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:80", maxAge = 3600)
 @RestController
 public class CollegeController {
 
@@ -27,19 +27,19 @@ public class CollegeController {
         return collegeDAO.getCollege(id);
     }
 
-    @PostMapping("/colleges")
-    public void addCollege(@Valid @RequestBody College college){
-        collegeDAO.addCollege(college);
-    }
-
-    @PutMapping("/colleges/{id}")
-    public @ResponseBody College updateCollege(@Valid @RequestBody College college){
-        return collegeDAO.updateCollege(college);
-    }
-
-    @DeleteMapping("/colleges/{id}")
-    public void deleteCollege(@PathVariable String id){
-        collegeDAO.deleteCollege(id);
-    }
+//    @PostMapping("/colleges")
+//    public void addCollege(@Valid @RequestBody College college){
+//        collegeDAO.addCollege(college);
+//    }
+//
+//    @PutMapping("/colleges/{id}")
+//    public @ResponseBody College updateCollege(@Valid @RequestBody College college){
+//        return collegeDAO.updateCollege(college);
+//    }
+//
+//    @DeleteMapping("/colleges/{id}")
+//    public void deleteCollege(@PathVariable String id){
+//        collegeDAO.deleteCollege(id);
+//    }
 
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department Image</title>
+</head>
+<body>
+<div align="center">
+    <h1> Upload Department Image </h1>
+    <h3> <td th:text="${dept.name}"></td></h3>
+    <form action="#" th:action="@{/admin/departments/imageUpload}" th:object="${dept}" method="post" enctype="multipart/form-data">
+        <tr>
+            <input type="file" name="imageFile" th:accept="${accept}">
+        </tr>
+        <td><input type="hidden" th:field="*{name}"/></td>
+        <td><input type="hidden" th:field="*{description}"/></td>
+        <td><input type="hidden" th:field="*{college}"/></td>
+        <tr>
+            <td><button type="submit">Save</button></td>
+        </tr>
+    </form>
+</div>
+</body>
+</html>

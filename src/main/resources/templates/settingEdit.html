@@ -6,6 +6,7 @@
 <body>
 <div align="center">
     <h1> Edit Setting </h1>
+    <h3> <td th:text="${setting.id}"></td></h3>
     <form action="#" th:action="@{/admin/settings/update}" th:object="${setting}" method="post">
         <table border="0" cellpadding="10">
             <td><input type="hidden" th:field="*{id}"/></td>

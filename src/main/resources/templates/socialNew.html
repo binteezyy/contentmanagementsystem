@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Social Media Link</title>
+</head>
+<body>
+<div align="center">
+    <h1> Add Setting </h1><br/>
+    <form action="#" th:action="@{/admin/socials/new}" th:object="${socialLink}" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td> Social Media Name: </td>
+                <td><input type="text" th:field="*{name}"></td>
+            </tr>
+            <tr>
+                <td> Social Medai URL: </td>
+                <td><input type="text" th:field="*{url}"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

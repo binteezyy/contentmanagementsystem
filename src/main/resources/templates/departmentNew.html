@@ -14,17 +14,20 @@
                 <form action="#" th:action="@{/admin/departments/new}" th:object="${department}" method="post">
                     <table border="0" cellpadding="10">
                         <tr>
-                            <td> Department Name: </td>
+                            <td> Department Initials: </td>
                             <td><input type="text" th:field="*{name}"></td>
                         </tr>
                         <tr>
-                            <td> Description: </td>
+                            <td> Department Name: </td>
                             <td><input type="text" th:field="*{description}"/></td>
                         </tr>
                         <tr>
+                        <td> College: </td>
+                        <td>
                         <select th:field="*{college}">
                             <option th:each="college: ${colleges}" th:value="${college.id}" th:text="${college.name}"></option>
                         </select>
+                        </td>
                         </tr>
                         <tr>
                             <td><button type="submit">Save</button></td>

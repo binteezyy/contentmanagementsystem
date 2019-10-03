@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,7 +64,9 @@ public class EmployeeVC {
         Optional<Employee> eopt = employeeDAO.getEmployee(id);
         Employee employee = eopt.get();
         model.addAttribute("employee", employee);
+        model.addAttribute("accept", "image/*");
         model.addAttribute("title", "Employee Image");
+
 
         return "employeeImage";
     }
@@ -80,8 +79,8 @@ public class EmployeeVC {
     }
 
     @PostMapping("/admin/employees/update")
-    public String updateEmployeePage(@ModelAttribute("employee") Employee employee){
-        employeeDAO.updateEmployee(employee);
+    public String updateEmployeePage(@ModelAttribute("employee") Employee employee, @ModelAttribute("department") Department dept){
+        employeeDAO.updateEmployee(employee, dept);
 
         return "redirect:/admin/employees";
     }

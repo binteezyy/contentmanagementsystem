@@ -4,16 +4,13 @@ import com.ppt.contentmanagementsystem.dao.CollegeDAO;
 import com.ppt.contentmanagementsystem.dao.DepartmentDAO;
 import com.ppt.contentmanagementsystem.model.College;
 import com.ppt.contentmanagementsystem.model.Department;
-import org.hibernate.validator.constraints.ModCheck;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,8 +64,25 @@ public class DepartmentVC {
     }
 
     @PostMapping("/admin/departments/update")
-    public String updateDepartmentPage(@ModelAttribute("department") Department department){
-        departmentDAO.updateDepartment(department);
+    public String updateDepartmentPage(@ModelAttribute("department") Department department, @ModelAttribute("college") College college){
+        departmentDAO.updateDepartment(department, college);
+
+        return "redirect:/admin/departments";
+    }
+
+    @GetMapping("/admin/departments/imageUpload/{id}")
+    public String uploadDepartmentImagePage(Model model, @PathVariable String id){
+        Optional<Department> dopt = departmentDAO.getDepartment(id);
+        Department dept = dopt.get();
+        model.addAttribute("dept", dept);
+        model.addAttribute("accept", "image/*");
+
+        return "departmentImage";
+    }
+
+    @PostMapping("/admin/departments/imageUpload")
+    public String updateDepartmentImage(@ModelAttribute("dept") Department dept, @RequestParam("imageFile")MultipartFile imageFile) throws IOException{
+        departmentDAO.saveDepartmentImage(dept, imageFile);
 
         return "redirect:/admin/departments";
     }
