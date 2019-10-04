@@ -11,7 +11,7 @@
         </nav>
         <div class="container-fluid" id="main-screen">
             <h1> Setting List </h1>
-<!--            <a href="/admin/settings/new">Add new Setting</a><br/><br/>-->
+            <a href="/admin/settings/new">Add new Setting</a><br/><br/>
             <div class="table-responsive">
             <table border="1" cellpadding="10" class="table table-bordered">
                 <thead>
@@ -62,7 +62,7 @@
                     <td>
                         <a th:href="@{'/admin/settings/edit/' + ${setting.id}}">Edit</a>
                         &nbsp;&nbsp;&nbsp;
-<!--                        <a th:href="@{'/admin/settings/delete/' + ${setting.id}}">Delete</a>-->
+                        <a th:href="@{'/admin/settings/delete/' + ${setting.id}}">Delete</a>
                     </td>
                 </tr>
                 </tbody>
