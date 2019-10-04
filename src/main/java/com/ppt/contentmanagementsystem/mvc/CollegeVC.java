@@ -24,12 +24,6 @@ public class CollegeVC {
         model.addAttribute("title", "Dashboard");
         return "home";
     }
-    
-    @GetMapping("/")
-    public String homePages(Model model) {
-        model.addAttribute("title", "Dashboard");
-        return "home";
-    }
 
     @GetMapping("/admin/colleges")
     public String collegesHomePage(Model model){
