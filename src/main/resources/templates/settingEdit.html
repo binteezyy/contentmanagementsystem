@@ -4,48 +4,58 @@
 <head th:replace="template :: header">
 </head>
 <body>
-<div align="center">
-    <h1> Edit Setting </h1>
-    <h3> <td th:text="${setting.id}"></td></h3>
-    <form action="#" th:action="@{/admin/settings/update}" th:object="${setting}" method="post">
-        <table border="0" cellpadding="10">
-            <td><input type="hidden" th:field="*{id}"/></td>
-            <td><input type="hidden" th:field="*{mainIconFn}"/></td>
-            <td><input type="hidden" th:field="*{negativeIconFn}"/></td>
-            <td><input type="hidden" th:field="*{iconLongFn}"/></td>
-            <td><input type="hidden" th:field="*{headermp4}"/></td>
-            <td><input type="hidden" th:field="*{footer}"></td>
-            <tr>
-                <td> Theme: </td>
-                <td>
-                    <select th:field="*{themeName}">
-                        <option th:value="ThemeOne" th:text="ThemeOne"></option>
-                        <option th:value="ThemeTwo" th:text="ThemeTwo"></option>
-                        <option th:value="ThemeThree" th:text="ThemeThree"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td> SMS Url: </td>
-                <td><input type="text" th:field="*{smsUrl}"/></td>
-            </tr>
-            <tr>
-                <td> Admission Url: </td>
-                <td><input type="text" th:field="*{admissionUrl}"/></td>
-            </tr>
-            <tr>
-                <td> Header One: </td>
-                <td><input type="text" th:field="*{headerOne}"/></td>
-            </tr>
-            <tr>
-                <td> Header Two: </td>
-                <td><input type="text" th:field="*{headerTwo}"/></td>
-            </tr>
-            <tr>
-                <td><button type="submit">Save</button></td>
-            </tr>
-        </table>
-    </form>
-</div>
+    <div class="d-flex" id="wrapper">
+        <div th:insert="template::sidebar">
+        </div>
+        <div id="page-content-wrapper">
+            <nav th:insert="template::navbar">
+            </nav>
+            <div class="container-fluid" align="center" id="main-screen">
+                <h1> Edit Setting </h1>
+                <h3> <td th:text="${setting.id}"></td></h3>
+                <form action="#" th:action="@{/admin/settings/update}" th:object="${setting}" method="post">
+                    <table border="0" cellpadding="10">
+                        <td><input type="hidden" th:field="*{id}"/></td>
+                        <td><input type="hidden" th:field="*{mainIconFn}"/></td>
+                        <td><input type="hidden" th:field="*{negativeIconFn}"/></td>
+                        <td><input type="hidden" th:field="*{iconLongFn}"/></td>
+                        <td><input type="hidden" th:field="*{headermp4}"/></td>
+                        <td><input type="hidden" th:field="*{footer}"></td>
+                        <tr>
+                            <td> Theme: </td>
+                            <td>
+                                <select class="form-control" th:field="*{themeName}">
+                                    <option th:value="ThemeOne" th:text="ThemeOne"></option>
+                                    <option th:value="ThemeTwo" th:text="ThemeTwo"></option>
+                                    <option th:value="ThemeThree" th:text="ThemeThree"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> SMS Url: </td>
+                            <td><input type="text" class="form-control" th:field="*{smsUrl}"/></td>
+                        </tr>
+                        <tr>
+                            <td> Admission Url: </td>
+                            <td><input type="text" class="form-control" th:field="*{admissionUrl}"/></td>
+                        </tr>
+                        <tr>
+                            <td> Header One: </td>
+                            <td><input type="text" class="form-control" th:field="*{headerOne}"/></td>
+                        </tr>
+                        <tr>
+                            <td> Header Two: </td>
+                            <td><input type="text" class="form-control" th:field="*{headerTwo}"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center"><button class="btn btn-primary" type="submit">Save</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 </body>
 </html>
