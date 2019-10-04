@@ -10,7 +10,7 @@
     <div id="page-content-wrapper">
         <nav th:insert="template::navbar">
         </nav>
-        <div class="container-fluid">
+        <div class="container-fluid" align="center">
             <h1> Edit News</h1>
             <h3> <td th:text="${n.id}"></td></h3>
             <form action="#" th:action="@{/admin/news/update}" th:object="${n}" method="post">
@@ -30,7 +30,7 @@
                         <td><input type="text" class="form-control" th:field="*{date}"></td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><button type="submit">Save</button></td>
+                        <td colspan="2" style="text-align: center"><button class="btn btn-primary" type="submit">Save</button></td>
                     </tr>
                 </table>
         </div>
