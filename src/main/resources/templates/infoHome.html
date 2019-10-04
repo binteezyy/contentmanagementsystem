@@ -11,9 +11,9 @@
         </nav>
         <div class="container-fluid">
             <h1> Info List </h1>
-            <a href="/admin/infos/new">Add new Info</a><br/><br/>
+            <a type="button" class="btn btn-primary" href="/admin/infos/new">Add new Info</a><br/><br/>
             <div class="table-responsive">
-                <table border="1" cellpadding="10">
+                <table border="1" cellpadding="10" class="table table-bordered">
                     <thead>
                     <tr>
                         <th> Id </th>
@@ -34,9 +34,27 @@
                         <td th:text="${info.objectives}"></td>
                         <td th:text="${info.history}"></td>
                         <td>
-                            <a th:href="@{'/admin/infos/edit/' + ${info.id}}">Edit</a>
-                            &nbsp;&nbsp;&nbsp;
-                            <a th:href="@{'/admin/infos/delete/' + ${info.id}}">Delete</a>
+                            <a type="button" class="btn btn-primary" th:href="@{'/admin/infos/edit/' + ${info.id}}">Edit</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" th:attr="data-target='#infoDel'+${info.id}">Delete</button>
+                            <div class="modal fade" th:id="infoDel+${info.id}" tabindex="-1" role="dialog" aria-labelledby="infoDel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="infoDel">Are you sure?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        Do you want to delete this Site Info?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a type="button" class="btn btn-primary" th:href="@{/admin/infos/delete/{iid}(iid=${info.id})}">Delete</a>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
