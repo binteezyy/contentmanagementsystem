@@ -72,6 +72,7 @@ public class CollegeVC {
         College college = copt.get();
         model.addAttribute("college", college);
         model.addAttribute("accept", "image/*");
+        model.addAttribute("title","College Image Upload");
 
         return "collegeImage";
     }
