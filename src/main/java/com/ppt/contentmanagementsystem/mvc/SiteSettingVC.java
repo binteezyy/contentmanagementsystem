@@ -31,6 +31,7 @@ public class SiteSettingVC {
     public String newSettingsPage(Model model){
         SiteSetting ss = new SiteSetting();
         model.addAttribute("setting", ss);
+        model.addAttribute("title", "Add Settings");
 
         return "settingNew";
     }
