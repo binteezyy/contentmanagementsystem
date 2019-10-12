@@ -32,6 +32,7 @@ public class SiteInfoVC {
     public String newInfoPage(Model model){
         SiteInfo info = new SiteInfo();
         model.addAttribute("info", info);
+        model.addAttribute("title","New Site Information");
 
         return "infoNew";
     }

@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Event</title>
+<head th:replace="template::header">
 </head>
 <body>
-<div align="center">
-    <h1> Add Event</h1><br/>
-    <form action="#" th:action="@{/admin/events/new}" th:object="${eventl}" method="post">
-        <table border="0" cellpadding="10">
-            <tr>
-                <td> Event Title: </td>
-                <td><input type="text" th:field="*{title}"></td>
-            </tr>
-            <tr>
-                <td> Event Description: </td>
-                <td><input type="text" th:field="*{description}"></td>
-            </tr>
-            <tr>
-                <td> Event Date: </td>
-                <td><input type="text" th:field="*{date}"></td>
-            </tr>
-            <tr>
-                <td> Event Start time: </td>
-                <td><input type="text" th:field="*{start_time}"></td>
-            </tr>
-            <tr>
-                <td><button type="submit">Save</button></td>
-            </tr>
-        </table>
-    </form>
+<div class="d-flex" id="wrapper">
+    <div th:insert="template::sidebar">
+    </div>
+    <div id="page-content-wrapper">
+        <nav th:insert="template::navbar">
+        </nav>
+        <div class="container-fluid" align="center">
+            <h1> Add Event</h1><br/>
+            <form action="#" th:action="@{/admin/events/new}" th:object="${eventl}" method="post">
+                <table border="0" cellpadding="10">
+                    <tr>
+                        <td> Event Title: </td>
+                        <td><input type="text" class="form-control" th:field="*{title}"></td>
+                    </tr>
+                    <tr>
+                        <td> Event Description: </td>
+                        <td><input type="text" class="form-control" th:field="*{description}"></td>
+                    </tr>
+                    <tr>
+                        <td> Event Date: </td>
+                        <td><input type="text" class="form-control" th:field="*{date}"></td>
+                    </tr>
+                    <tr>
+                        <td> Event Start time: </td>
+                        <td><input type="text" class="form-control" th:field="*{start_time}"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center"><button class="btn btn-primary" type="submit">Save</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

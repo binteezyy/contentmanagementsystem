@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Event Image</title>
+<head th:replace="template::header">
 </head>
 <body>
-<div align="center">
-    <h1> Upload Event Image </h1>
-    <h3> <td th:text="${eventl.title}"></td></h3>
-    <form action="#" th:action="@{/admin/events/imageUpload}" th:object="${eventl}" method="post" enctype="multipart/form-data">
-        <tr>
-            <input type="file" name="imageFile" th:accept="${accept}">
-        </tr>
-        <td><input type="hidden" th:field="*{id}"/></td>
-        <td><input type="hidden" th:field="*{title}"/></td>
-        <td><input type="hidden" th:field="*{description}"/></td>
-        <td><input type="hidden" th:field="*{date}"/></td>
-        <td><input type="hidden" th:field="*{start_time}"/></td>
-        <tr>
-            <td><button type="submit">Save</button></td>
-        </tr>
-    </form>
+<div class="d-flex" id="wrapper">
+    <div th:insert="template::sidebar">
+    </div>
+    <div id="page-content-wrapper">
+        <nav th:insert="template::navbar">
+        </nav>
+        <div class="container-fluid" align="center">
+            <h1> Upload Event Image </h1>
+            <h3> <td th:text="${eventl.title}"></td></h3>
+            <form action="#" th:action="@{/admin/events/imageUpload}" th:object="${eventl}" method="post" enctype="multipart/form-data">
+                <tr>
+                    <td><input type="file" name="imageFile" th:accept="${accept}"></td>
+                </tr>
+                <td><input type="hidden" th:field="*{id}"/></td>
+                <td><input type="hidden" th:field="*{title}"/></td>
+                <td><input type="hidden" th:field="*{description}"/></td>
+                <td><input type="hidden" th:field="*{date}"/></td>
+                <td><input type="hidden" th:field="*{start_time}"/></td>
+                <tr>
+                    <td><button class="btn btn-primary" type="submit">Save</button></td>
+                </tr>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

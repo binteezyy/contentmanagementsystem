@@ -12,13 +12,10 @@
         <div class="container-fluid" id="main-screen">
             <h1> Setting List </h1>
 <!--            <a href="/admin/settings/new">Add new Setting</a><br/><br/>-->
-<<<<<<< HEAD
 
             <div class="table-responsive"><table border="1" cellpadding="10">
-=======
-            <div class="table-responsive">
-            <table border="1" cellpadding="10" class="table table-bordered">
->>>>>>> b6d8c68a785f0e5ea3b5d51f3beceaa235ca8915
+            <a type="button" class="btn btn-primary" href="/admin/settings/new">Add new Setting</a><br/><br/>
+
                 <thead>
                 <tr>
                     <th> Id </th>
@@ -39,16 +36,16 @@
                 <tr th:each="setting: ${settings}">
                     <td th:text="${setting.id}"></td>
                     <td>
-                        <span th:text="${setting.mainIconFn}"></span>
-                        <a th:href="@{'/admin/settings/mainIconUpload/' + ${setting.id}}">Upload Main Icon</a>
+                        <span th:text="${setting.mainIconFn}"></span><br/>
+                        <a class="btn btn-light" th:href="@{'/admin/settings/mainIconUpload/' + ${setting.id}}">Upload Main Icon</a>
                     </td>
                     <td>
-                        <span th:text="${setting.negativeIconFn}"></span>
-                        <a th:href="@{'/admin/settings/negativeIconUpload/' + ${setting.id}}">Upload Negative Icon</a>
+                        <span th:text="${setting.negativeIconFn}"></span><br/>
+                        <a class="btn btn-light" th:href="@{'/admin/settings/negativeIconUpload/' + ${setting.id}}">Upload Negative Icon</a>
                     </td>
                     <td>
-                        <span th:text="${setting.iconLongFn}"></span>
-                        <a th:href="@{'/admin/settings/longIconUpload/' + ${setting.id}}">Upload Long Icon</a>
+                        <span th:text="${setting.iconLongFn}"></span><br/>
+                        <a class="btn btn-light" th:href="@{'/admin/settings/longIconUpload/' + ${setting.id}}">Upload Long Icon</a>
                     </td>
                     <td th:text="${setting.themeName}"></td>
                     <td th:text="${setting.smsUrl}"></td>
@@ -57,28 +54,45 @@
                     <td th:text="${setting.headerTwo}"></td>
                     <td>
                         <video th:src="@{'/uploads/' + ${setting.headermp4}}"></video>
+
                         <span th:text="${setting.headermp4}"></span>
                         <video width="320" height="240" controls>
                             <source th:src="@{'/uploads/' + ${setting.headermp4}}" type="video/mp4"></video>
                         <a th:href="@{'/admin/settings/headermp4Upload/' + ${setting.id}}">Upload Header mp4</a>
+                  
                     </td>
                     <td>
-                        <span th:text="${setting.footer}"></span>
-                        <a th:href="@{'/admin/settings/footerUpload/' + ${setting.id}}">Upload Footer Image</a>
+                        <span th:text="${setting.footer}"></span><br/>
+                        <a class="btn btn-light" th:href="@{'/admin/settings/footerUpload/' + ${setting.id}}">Upload Footer Image</a>
                     </td>
-                    <td>
-                        <a th:href="@{'/admin/settings/edit/' + ${setting.id}}">Edit</a>
-                        &nbsp;&nbsp;&nbsp;
-<!--                        <a th:href="@{'/admin/settings/delete/' + ${setting.id}}">Delete</a>-->
+                    <td style="text-align: center">
+                        <a class="btn btn-primary" th:href="@{'/admin/settings/edit/' + ${setting.id}}">Edit</a>
+                        <br/><br/>
+                        <!-- <a class="btn btn-primary" th:href="@{'/admin/settings/delete/' + ${setting.id}}">Delete</a> -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" th:attr="data-target='#setDel'+${setting.id}">Delete</button>
+                        <div class="modal fade" th:id="setDel+${setting.id}" tabindex="-1" role="dialog" aria-labelledby="setDel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="setDel">Are you sure?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Do you want to delete this Setting?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a type="button" class="btn btn-primary" th:href="@{/admin/settings/delete/{setID}(setID=${setting.id})}">Delete</a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
-<<<<<<< HEAD
             </table></div>
-=======
-            </table>
-            </div>
->>>>>>> b6d8c68a785f0e5ea3b5d51f3beceaa235ca8915
         </div>
     </div>
 </div>
