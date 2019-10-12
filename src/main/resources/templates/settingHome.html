@@ -11,9 +11,11 @@
         </nav>
         <div class="container-fluid" id="main-screen">
             <h1> Setting List </h1>
+<!--            <a href="/admin/settings/new">Add new Setting</a><br/><br/>-->
+
+            <div class="table-responsive"><table border="1" cellpadding="10">
             <a type="button" class="btn btn-primary" href="/admin/settings/new">Add new Setting</a><br/><br/>
-            <div class="table-responsive">
-            <table border="1" cellpadding="10" class="table table-bordered">
+
                 <thead>
                 <tr>
                     <th> Id </th>
@@ -52,8 +54,12 @@
                     <td th:text="${setting.headerTwo}"></td>
                     <td>
                         <video th:src="@{'/uploads/' + ${setting.headermp4}}"></video>
-                        <span th:text="${setting.headermp4}"></span><br/>
-                        <a class="btn btn-light" th:href="@{'/admin/settings/headermp4Upload/' + ${setting.id}}">Upload Header mp4</a>
+
+                        <span th:text="${setting.headermp4}"></span>
+                        <video width="320" height="240" controls>
+                            <source th:src="@{'/uploads/' + ${setting.headermp4}}" type="video/mp4"></video>
+                        <a th:href="@{'/admin/settings/headermp4Upload/' + ${setting.id}}">Upload Header mp4</a>
+                  
                     </td>
                     <td>
                         <span th:text="${setting.footer}"></span><br/>
@@ -86,8 +92,7 @@
                     </td>
                 </tr>
                 </tbody>
-            </table>
-            </div>
+            </table></div>
         </div>
     </div>
 </div>
