@@ -1,26 +1,33 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Employee Image</title>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template::header">
 </head>
 <body>
-    <div align="center">
-        <h1> Upload Employee Image </h1>
-        <h3> <td th:text="${employee.name}"></td></h3>
-        <form action="#" th:action="@{/admin/employees/imageUpload}" th:object="${employee}" method="post" enctype="multipart/form-data">
-        <tr>
-            <input type="file" name="imageFile" th:accept="${accept}">
-        </tr>
-        <td><input type="hidden" th:field="*{name}"/></td>
-        <td><input type="hidden" th:field="*{designation}"/></td>
-        <td><input type="hidden" th:field="*{credentials}"/></td>
-        <td><input type="hidden" th:field="*{department}"/></td>
-        <tr>
-            <td><button type="submit">Save</button></td>
-        </tr>
-        </form>
+    <div class="d-flex" id="wrapper">
+        <div th:insert="template::sidebar">  
+        </div>
+        <div id="page-content-wrapper">
+            <nav th:insert="template::navbar">
+            </nav>
+            <div class="container-fluid" align="center">
+                <h1> Upload Employee Image </h1><br/>
+                <h3> <td th:text="${employee.name}"></td></h3>
+                <form action="#" th:action="@{/admin/employees/imageUpload}" th:object="${employee}" method="post" enctype="multipart/form-data">
+                    <tr>
+                        <input type="file" name="imageFile" th:accept="${accept}">
+                    </tr>
+                    <td><input type="hidden" th:field="*{name}"/></td>
+                    <td><input type="hidden" th:field="*{designation}"/></td>
+                    <td><input type="hidden" th:field="*{credentials}"/></td>
+                    <td><input type="hidden" th:field="*{department}"/></td>
+                    <tr>
+                        <td><button class="btn btn-primary" type="submit">Save</button></td>
+                    </tr>
+                </form>
+            </div>
+        </div>
     </div>
+    <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 </body>
 </html>

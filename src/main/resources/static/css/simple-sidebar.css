@@ -31,11 +31,18 @@ body {
 
 #page-content-wrapper {
   min-width: 100vw;
+  /* overflow-x:scroll; */
 }
 
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
+
+/* #main-screen {
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x: auto;
+} */
 
 @media (min-width: 768px) {
   #sidebar-wrapper {

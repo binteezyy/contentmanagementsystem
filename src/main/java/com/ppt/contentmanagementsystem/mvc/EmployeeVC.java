@@ -65,6 +65,8 @@ public class EmployeeVC {
         Employee employee = eopt.get();
         model.addAttribute("employee", employee);
         model.addAttribute("accept", "image/*");
+        model.addAttribute("title", "Employee Image");
+
 
         return "employeeImage";
     }

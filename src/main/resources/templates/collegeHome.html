@@ -11,14 +11,19 @@
             </nav>
             <div class="container-fluid" align="center">
                     <h1> College List </h1>
-                    <a href="/admin/colleges/new"> Create New College </a>
+                    <a href="/admin/colleges/new"><button class="btn btn-primary">New College</button></a><br><br>
                 
-                    <table border="1" cellpadding="10">
+                    <table border="1" cellpadding="10" class="table table-bordered">
                         <thead>
                         <tr>
                             <th> College Initials </th>
                             <th> College Name </th>
                             <th> Image filename </th>
+                            <th> College Description </th>
+                            <th> College Telephone Number </th>
+                            <th> College Fax Number </th>
+                            <th> College Email Address </th>
+                            <th> College Address </th>
                             <th> Actions </th>
                         </tr>
                         </thead>
@@ -27,10 +32,34 @@
                             <td th:text="${college.id}"></td>
                             <td th:text="${college.name}"></td>
                             <td th:text="${college.image_fn}"></td>
+                            <td th:text="${college.description}"></td>
+                            <td th:text="${college.telno}"></td>
+                            <td th:text="${college.faxno}"></td>
+                            <td th:text="${college.email}"></td>
+                            <td th:text="${college.address}"></td>
                             <td>
-                                <a th:href="@{'/admin/colleges/edit/' + ${college.id}}">Edit</a>
-                                <a th:href="@{'/admin/colleges/delete/' + ${college.id}}">Delete</a>
-                                <a th:href="@{'/admin/colleges/imageUpload/' + ${college.id}}">Image Upload</a>
+                                <a th:href="@{'/admin/colleges/edit/' + ${college.id}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" th:attr="data-target='#collegeDelete'+${college.id}">Delete</button>
+                                <div class="modal fade" th:id="collegeDelete+${college.id}" tabindex="-1" role="dialog" aria-labelledby="collegeDelete" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="collegeDelete">Are you sure?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            Do you want to delete this college?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a type="button" class="btn btn-primary" th:href="@{/admin/colleges/delete/{colid} (colid=${college.id})}">Delete</a>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a th:href="@{'/admin/colleges/imageUpload/' + ${college.id}}"><button type="button" class="btn btn-primary">Image Upload</button></a>
                             </td>
                         </tr>
                         </tbody>
